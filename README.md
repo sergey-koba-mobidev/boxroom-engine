@@ -27,3 +27,8 @@ Please feel free to leave an issue or PR.
 
 ## License
 The engine is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+## TODO:
+- fix tests
+- fix paperclip security warning
+- allow to use existing User model
