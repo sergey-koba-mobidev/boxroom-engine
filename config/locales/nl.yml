@@ -1,0 +1,406 @@
+# Dutch translations for Ruby on Rails, based on US English template
+# Original version by Ariejan de Vroom <ariejan@ariejan.net>
+# - Sponsored by Kabisa ICT - http://kabisa.nl
+# Rails 3 update by Floris Huetink <floris@avocado.nl> (github: florish)
+
+nl:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+      only_day: "%e"
+
+    day_names: [zondag, maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag]
+    abbr_day_names: [zon, maa, din, woe, don, vri, zat]
+
+    month_names: [~, januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december]
+    abbr_month_names: [~, jan, feb, mar, apr, mei, jun, jul, aug, sep, okt, nov, dec]
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%a %d %b %Y %H:%M:%S %Z"
+      short: "%d %b %Y %H:%M"
+      very_short: "%d %b %Y"
+      long: "%d %B %Y %H:%M"
+      time: "%H:%M"
+      only_second: "%S"
+    am: "'s ochtends"
+    pm: "'s middags"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " en "
+      last_word_connector: " en "
+
+    select:
+      prompt: "Selecteer"
+
+  number:
+    format:
+      separator: ","
+      delimiter: "."
+      precision: 2
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%u%n"
+        unit: "€"
+        separator: ","
+        delimiter: "."
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "duizend"
+          million: "miljoen"
+          billion: "miljard"
+          trillion: "biljoen"
+          quadrillion: "biljard"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "een halve minuut"
+      less_than_x_seconds:
+        one: "minder dan \xC3\xA9\xC3\xA9n seconde"
+        other: "minder dan %{count} seconden"
+      x_seconds:
+        one: "1 seconde"
+        other: "%{count} seconden"
+      less_than_x_minutes:
+        one: "minder dan \xC3\xA9\xC3\xA9n minuut"
+        other: "minder dan %{count} minuten"
+      x_minutes:
+        one: "1 minuut"
+        other: "%{count} minuten"
+      about_x_hours:
+        one: "ongeveer \xC3\xA9\xC3\xA9n uur"
+        other: "ongeveer %{count} uur"
+      x_days:
+        one: "1 dag"
+        other: "%{count} dagen"
+      about_x_months:
+        one: "ongeveer \xC3\xA9\xC3\xA9n maand"
+        other: "ongeveer %{count} maanden"
+      x_months:
+        one: "1 maand"
+        other: "%{count} maanden"
+      about_x_years:
+        one: "ongeveer \xC3\xA9\xC3\xA9n jaar"
+        other: "ongeveer %{count} jaar"
+      over_x_years:
+        one: "meer dan \xC3\xA9\xC3\xA9n jaar"
+        other: "meer dan %{count} jaar"
+      almost_x_years:
+        one: "bijna \xC3\xA9\xC3\xA9n jaar"
+        other: "bijna %{count} jaar"
+    prompts:
+      year: "jaar"
+      month: "maand"
+      day: "dag"
+      hour: "uur"
+      minute: "minuut"
+      second: "seconde"
+
+  helpers:
+    select:
+      prompt: "Selecteer"
+
+    submit:
+      create: '%{model} toevoegen'
+      update: '%{model} opslaan'
+      submit: '%{model} opslaan'
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "is niet in de lijst opgenomen"
+      exclusion: "is niet beschikbaar"
+      invalid: "is ongeldig"
+      confirmation: "klopt niet"
+      accepted: "moet worden geaccepteerd"
+      empty: "  mag niet leeg zijn"
+      blank: "mag niet leeg zijn"
+      exists_already: 'bestaat al'
+      too_long: "is te lang (maximaal %{count} tekens)"
+      too_short: "is te kort (minimaal %{count} tekens)"
+      wrong_length: "heeft onjuiste lengte (moet %{count} tekens lang zijn)"
+      not_a_number: "is geen getal"
+      not_an_integer: "moet een geheel getal zijn"
+      greater_than: "moet groter zijn dan %{count}"
+      greater_than_or_equal_to: "moet groter dan of gelijk zijn aan %{count}"
+      equal_to: "moet gelijk zijn aan %{count}"
+      less_than: "moet minder zijn dan %{count}"
+      less_than_or_equal_to: "moet minder dan of gelijk zijn aan %{count}"
+      odd: "moet oneven zijn"
+      even: "moet even zijn"
+      invalid_characters: 'mag geen van deze tekens bevatten: < > : " / \ | ? *'
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "1 fout gevonden: %{model} niet opgeslagen"
+          other: "%{count} fouten gevonden: %{model} niet opgeslagen"
+        body: "Controleer de volgende velden:"
+
+      messages:
+        taken: "is al in gebruik"
+        record_invalid: "Validatie mislukt: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute} %{message}"
+
+    models:
+      clipboard: Klembord
+      folder: Map
+      group: Groep
+      permission: Bevoegdheid
+      share_link: Gedeelde link
+      user: Gebruiker
+      user_file: Bestand
+
+    attributes:
+      folder:
+        name: Naam
+      group:
+        name: Naam
+      share_link:
+        emails: E-mailadressen
+        expires_at: Vervaldatum
+      user:
+        email: E-mail
+        name: Naam
+        password: Wachtwoord
+      user_file:
+        name: Naam
+        attachment_file_name: Bestand
+
+  # APPLICATION SPECIFIC
+
+  # general
+  back: Terug
+  save: Opslaan
+  name: Naam
+  email: E-mail
+  submit: Opslaan
+
+  your_changes_were_saved: Uw wijzigingen zijn opgeslagen.
+  already_deleted: "Iemand heeft %{type} reeds verwijderd."
+
+  # admins/new
+  create_admin: Admin aanmaken
+  no_administrator_yet: Boxroom heeft nog geen administrator. Deze kunt u nu aanmaken.
+  create_admin_account: Admin gebruiker aanmaken
+  admin_user_created_successfully: De admin gebruiker is aangemaakt. U kunt nu inloggen.
+
+  # clipboard/_show
+  folder: map
+  file: bestand
+  this_folder: deze map
+  this_file: dit bestand
+  copy: Kopieer
+  copy_folder: Map kopiëren
+  copy_file: Bestand kopiëren
+  move: Verplaatsen
+  move_folder: Map verplaatsen
+  move_file: Bestand verplaatsen
+  are_you_sure: Weet u het zeker?
+  delete_item: Verwijderen
+  remove_from_clipboard: Verwijder van klembord
+  clear_clipboard: Klembord legen
+
+  # files/edit
+  rename_file: Bestandsnaam wijzigen
+
+  # files/new
+  select_file: Selecteer bestand
+  upload_file: Bestanden uploaden
+  upload: Uploaden
+  exists_already: bestaat al
+
+  #folders/edit
+  rename_folder: Mapnaam wijzigen
+
+  #folders/new
+  new_folder: Nieuwe map
+
+  #folders/show
+  create_a_new_folder: Nieuwe map aanmaken
+  upload_a_file: Bestanden uploaden
+  permissions: Bevoegdheden
+  clipboard: Klembord
+  size: Grootte
+  date_modified: Datum gewijzigd
+  up: omhoog
+  edit: Wijzigen
+  add_to_clipboard: Op klembord plaatsen
+  download: Download
+  share: Delen
+
+  #groups/edit
+  rename_group: Groepnaam wijzigen
+
+  #groups/index
+  groups: Groepen
+  create_a_new_group: Nieuwe groep aanmaken
+
+  #groups/new
+  new_group: Nieuwe groep
+
+  #permissions/form
+  create_permission: Aanmaken
+  read_permission: Lezen
+  update_permission: Wijzigen
+  delete_permission: Verwijderen
+  apply_changes_to_subfolders: Toepassen op submappen
+
+  create: aanmaak
+  read: lees
+  update: wijzig
+  delete: verwijder
+
+  #reset_password/edit
+  password: Wachtwoord
+  reset_password: Wachtwoord resetten
+  send_email: Verzenden
+
+  #signup/edit
+  sign_up: Aanmelden
+
+  #sessions
+  username: Gebruikersnaam
+  remember_me: Onthoud mij
+  sign_in: Inloggen
+
+  #share_links/index
+  shared_by: Gedeeld door
+  unshare: Delen ongedaan maken
+
+  #share_links/new
+  this_share_link: this share link
+  share_file: Bestand delen
+  you_are_about_to_share_the_following_file: U staat op het punt het volgende bestand te delen
+  emails_to_share_with: E-mailadressen van de mensen waarmee u dit bestand wilt delen
+  comma_seperated: Gescheiden door komma's
+  number_of_charachters: Aantal tekens
+  link_expires: Vervaldatum
+  tomorrow: Morgen
+  three_days_from_now: Over drie dagen
+  one_week_from_now: Over een week
+  ten_days_from_now: Over tien dagen
+  two_weeks_from_now: Over twee weken
+  three_weeks_from_now: Over drie weken
+  one_month_from_now: Over een maand
+  two_months_from_now: Over twee maanden
+  three_months_from_now: Over drie maanden
+  half_year_from_now: Over een half jaar
+  share_link_could_not_be_sent: De download link kon niet verstuurd worden
+  are_invalid_due_to: "is ongeldig vanwege %{email}"
+  shared_successfully: De download link is verstuurd.
+  shared_message: Bericht
+  optional: Niet verplicht
+
+  #shared/_header
+  hello: Hallo
+  settings: Instellingen
+  sign_out: Uitloggen
+
+  #shared/_menu
+  folders: Mappen
+  users: Gebruikers
+  shared_files: Gedeelde bestanden
+
+  #users/_form
+  member_of_these_groups: Lid van deze groepen
+  confirm_password: Bevestig wachtwoord
+
+  #users/index
+  create_a_new_user: Nieuwe gebruiker aanmaken
+  active_users: Actieve gebruikers
+  invited_users: Uitgenodigde gebruikers
+  expiration_date: Vervaldatum
+  extend_expiration_date: Vervaldatum uitstellen
+
+  #users/new
+  new_user: Nieuwe gebruiker
+
+  #admins/controller
+  admin_user_created_sucessfully: De admin gebruiker is aangemaakt. U kunt nu inloggen.
+
+  #application_controller
+  no_permissions_for_this_type: "U heeft geen %{method} bevoegdheden voor %{type}."
+
+  # clipboard_controller
+  added_to_clipboard: Succesvol toegevoegd aan klembord.
+  could_not_copy: "Kopiëren mislukt. Een %{type} met dezelfde naam bestaat al."
+  could_not_move: "Verplaatsen mislukt. Een %{type} met dezelfde naam bestaat al."
+  cannot_move_to_own_subfolder: U kunt een map niet verplaatsen naar zijn eigen submap.
+
+  # folders_controller
+  cannot_delete_root_folder: Root folder kan niet verwijderd of gewijzigd worden.
+  no_delete_permissions_for_subfolder: U heeft geen bevoegdheden om één van de submappen te verwijderen.
+
+  # groups_controller
+  group_already_deleted: Iemand anders heeft deze groep verwijderd. De actie is afgebroken.
+  admins_group_cannot_be_deleted: De admin groep kan niet verwijderd of gewijzigd worden.
+
+  # reset_password_controller
+  instruction_email_sent: "Een e-mail met instructies is verzonden als '%{email}' aanwezig is in ons systeem."
+  password_reset_successfully: Uw wachtwoord is gereset. U kunt nu inloggen.
+  reset_url_expired: De URL om uw wachtwoord te resetten is ongeldig. Probeer het nogmaals.
+
+  # signup_controller
+  signed_up_successfully: Account aangemaakt. U kunt nu inloggen.
+  sign_url_expired: The URL om aan te melden is ongeldig. Neem contact op met de administrator.
+
+  # sessions_controller
+  credentials_incorrect: Gebruikersnaam en/of wachtwoord was incorrect. Probeer het nogmaals.
+
+  # users_controller
+  user_already_deleted: Iemand anders heeft deze gebruiker verwijderd. De actie is afgebroken.
+  admin_user_cannot_be_deleted: De admin gebruiker kan niet verwijderd worden.
+  edit_user: Gebruiker wijzigen
+  account_settings: Mijn instellingen
+
+  # mailers/user_mailer
+  signup_email_subject: '[Boxroom] Uitnodiging om aan te melden'
+  reset_password_email_subject: '[Boxroom] Instructies om uw wachtwoord te resetten'
+  share_link_email_subject: '[Boxroom] %{email} heeft een bestand met u gedeeld'

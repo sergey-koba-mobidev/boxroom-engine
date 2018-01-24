@@ -1,0 +1,46 @@
+<%= form_for @user do |f| %>
+  <%= f.error_messages %>
+  <% unless @user.new_record? -%>
+  <p>
+    <%= f.label :name %>:<br>
+    <%= f.text_field :name, { :class => 'text_input' } %>
+  </p>
+  <% end -%>
+  <p>
+    <%= f.label :email %>:<br>
+    <%= f.text_field :email, { :class => 'text_input' } %>
+  </p>
+  <% unless @user.new_record? -%>
+  <p>
+    <%= f.label :password %>:<br>
+    <%= f.password_field :password, { :class => 'text_input' } %>
+  </p>
+  <p>
+    <%= label_tag t(:confirm_password) %>:<br>
+    <%= f.password_field :password_confirmation, { :class => 'text_input' } %>
+  </p>
+  <% end -%>
+  <% if signed_in? && current_user.member_of_admins? -%>
+  <p>
+    <%= t :member_of_these_groups %>:
+    <span class="user_groups">
+    <% if @user.is_admin -%>
+      <span class="disabled">
+        <%= hidden_field_tag 'user[group_ids][]', Group.admins_group.id %>
+        <input type="checkbox" checked="checked" disabled="disabled" /><label>Admins</label>
+      </span>
+      <%= f.collection_check_boxes :group_ids, Group.all_except_admins, :id, :name %>
+    <% else -%>
+      <%= f.collection_check_boxes :group_ids, Group.all, :id, :name %>
+    <% end -%>
+    </span>
+  </p>
+  <% end -%>
+  <p>
+    <%= f.submit t(:save) %>
+  <% if @user != current_user -%>
+    &nbsp; &mdash; &nbsp;
+    <%= link_to t(:back), users_url %>
+  <% end -%>
+  </p>
+<% end %>
