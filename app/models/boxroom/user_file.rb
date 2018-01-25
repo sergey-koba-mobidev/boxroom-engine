@@ -1,6 +1,6 @@
 module Boxroom
   class UserFile < ActiveRecord::Base
-    has_attached_file :attachment, :path => ':rails_root/uploads/:rails_env/:id/:style/:id', :restricted_characters => RESTRICTED_CHARACTERS
+    has_attached_file :attachment, :path => ':rails_root/uploads/:rails_env/:id/:style/:id', :restricted_characters => Boxroom::RESTRICTED_CHARACTERS
     do_not_validate_attachment_file_type :attachment
 
     belongs_to :folder

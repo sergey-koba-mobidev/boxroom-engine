@@ -6,7 +6,10 @@ require 'paperclip'
 require 'boxroom/configuration'
 require 'paperclip/media_type_spoof_detector'
 
+
 module Boxroom
+  RESTRICTED_CHARACTERS = /[&$+,\/:;=?@<>\[\]\{\}\|\\\^~%# ]/
+
   class << self
     attr_writer :configuration
 
