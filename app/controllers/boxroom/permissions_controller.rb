@@ -1,6 +1,6 @@
 module Boxroom
   class PermissionsController < ApplicationController
-    include BoxroomController
+    include Boxroom::BaseController
 
     before_action :require_admin
 

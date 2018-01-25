@@ -1,6 +1,6 @@
 module Boxroom
   class ClipboardController < ApplicationController
-    include BoxroomController
+    include Boxroom::BaseController
 
     before_action :require_existing_item, :except => :reset
     before_action :require_existing_target_folder, :only => [:copy, :move]
