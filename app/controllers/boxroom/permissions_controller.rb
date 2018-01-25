@@ -1,5 +1,7 @@
 module Boxroom
   class PermissionsController < ApplicationController
+    include BoxroomController
+
     before_action :require_admin
 
     def update_multiple

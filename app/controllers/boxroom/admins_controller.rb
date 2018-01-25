@@ -1,5 +1,7 @@
 module Boxroom
   class AdminsController < ApplicationController
+    include BoxroomController
+
     skip_before_action :require_admin_in_system, :require_login
     before_action :require_no_admin
 

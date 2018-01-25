@@ -1,5 +1,7 @@
 module Boxroom
   class ShareLinksController < ApplicationController
+    include BoxroomController
+
     before_action :require_admin, :only => [:index, :destroy]
     before_action :require_existing_file, :except => [:index, :destroy]
     before_action :require_existing_share_link, :only => :destroy

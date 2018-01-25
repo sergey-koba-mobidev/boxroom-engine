@@ -1,5 +1,7 @@
 module Boxroom
   class GroupsController < ApplicationController
+    include BoxroomController
+
     before_action :require_admin
     before_action :require_existing_group, :only => [:edit, :update, :destroy]
     before_action :require_group_isnt_admins_group, :only => [:edit, :update, :destroy]

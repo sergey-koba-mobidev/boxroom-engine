@@ -1,5 +1,7 @@
 module Boxroom
   class SessionsController < ApplicationController
+    include BoxroomController
+
     skip_before_action :require_login
 
     def new
