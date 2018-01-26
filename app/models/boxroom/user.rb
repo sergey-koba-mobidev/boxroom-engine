@@ -102,8 +102,8 @@ module Boxroom
     end
 
     def create_root_folder_and_admins_group
-      Folder.create(:name => 'Root folder')
-      groups << Group.create(:name => 'Admins')
+      Folder.find_or_create_by(name: 'Root folder')
+      groups << Group.find_or_create_by(name: 'Admins')
     end
 
     def dont_destroy_admin
