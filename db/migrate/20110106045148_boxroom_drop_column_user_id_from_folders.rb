@@ -1,4 +1,4 @@
-class DropColumnUserIdFromFolders < ActiveRecord::Migration
+class BoxroomDropColumnUserIdFromFolders < ActiveRecord::Migration
   def self.up
     remove_column :boxroom_folders, :user_id
   end

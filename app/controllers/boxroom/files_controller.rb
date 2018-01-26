@@ -1,5 +1,5 @@
 module Boxroom
-  class FilesController < ApplicationController
+  class FilesController < Boxroom::ApplicationController
     include Boxroom::BaseController
 
     before_action :require_existing_file, :only => [:show, :edit, :update, :destroy]

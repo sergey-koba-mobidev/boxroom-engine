@@ -1,5 +1,5 @@
 module Boxroom
-  class UsersController < ApplicationController
+  class UsersController < Boxroom::ApplicationController
     include Boxroom::BaseController
 
     before_action :require_admin, :except => [:edit, :update]

@@ -1,5 +1,5 @@
 module Boxroom
-  class GroupsController < ApplicationController
+  class GroupsController < Boxroom::ApplicationController
     include Boxroom::BaseController
 
     before_action :require_admin

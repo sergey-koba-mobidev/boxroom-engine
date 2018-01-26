@@ -1,5 +1,5 @@
 module Boxroom
-  class SignupController < ApplicationController
+  class SignupController < Boxroom::ApplicationController
     include Boxroom::BaseController
 
     before_action :require_valid_token, :only => [:edit, :update]

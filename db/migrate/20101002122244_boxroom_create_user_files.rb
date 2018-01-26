@@ -1,4 +1,4 @@
-class CreateUserFiles < ActiveRecord::Migration
+class BoxroomCreateUserFiles < ActiveRecord::Migration
   def self.up
     create_table :boxroom_user_files do |t|
       t.string :attachment_file_name

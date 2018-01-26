@@ -1,5 +1,5 @@
 module Boxroom
-  class ResetPasswordController < ApplicationController
+  class ResetPasswordController < Boxroom::ApplicationController
     include Boxroom::BaseController
 
     before_action :require_valid_token, :only => [:edit, :update]

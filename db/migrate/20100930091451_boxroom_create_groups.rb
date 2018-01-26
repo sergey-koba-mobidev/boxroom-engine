@@ -1,4 +1,4 @@
-class CreateGroups < ActiveRecord::Migration
+class BoxroomCreateGroups < ActiveRecord::Migration
   def self.up
     create_table :boxroom_groups do |t|
       t.string :name

@@ -1,4 +1,4 @@
-class CreateGroupsUsers < ActiveRecord::Migration
+class BoxroomCreateGroupsUsers < ActiveRecord::Migration
   def self.up
     create_table :boxroom_groups_users, :id => false do |t|
       t.references :group

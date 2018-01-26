@@ -1,5 +1,5 @@
 module Boxroom
-  class ClipboardController < ApplicationController
+  class ClipboardController < Boxroom::ApplicationController
     include Boxroom::BaseController
 
     before_action :require_existing_item, :except => :reset

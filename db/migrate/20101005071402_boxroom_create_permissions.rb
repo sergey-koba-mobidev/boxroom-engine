@@ -1,4 +1,4 @@
-class CreatePermissions < ActiveRecord::Migration
+class BoxroomCreatePermissions < ActiveRecord::Migration
   def self.up
     create_table :boxroom_permissions do |t|
       t.references :folder

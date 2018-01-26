@@ -1,4 +1,4 @@
-class AddColumnSignupTokenExpiresAtToUsers < ActiveRecord::Migration
+class BoxroomAddColumnSignupTokenExpiresAtToUsers < ActiveRecord::Migration
   def change
     change_table :boxroom_users do |t|
       t.datetime :signup_token_expires_at

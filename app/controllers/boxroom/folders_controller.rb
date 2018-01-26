@@ -1,5 +1,5 @@
 module Boxroom
-  class FoldersController < ApplicationController
+  class FoldersController < Boxroom::ApplicationController
     include Boxroom::BaseController
 
     before_action :require_existing_folder, :only => [:show, :edit, :update, :destroy]

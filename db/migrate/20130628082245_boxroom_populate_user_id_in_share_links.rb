@@ -1,4 +1,4 @@
-class PopulateUserIdInShareLinks < ActiveRecord::Migration
+class BoxroomPopulateUserIdInShareLinks < ActiveRecord::Migration
   def change
     active_users = Boxroom::User.where.not(:name => nil)
 

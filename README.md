@@ -21,6 +21,7 @@ mount Boxroom::Engine => "/boxroom"
 Boxroom.configure do |config|
   config.site_name = 'Boxroom'
   config.logo = 'boxroom/logo.png'
+  config.show_footer = true
 end
 ```
 
@@ -32,5 +33,3 @@ The engine is available as open source under the terms of the [MIT License](http
 
 ## TODO:
 - fix tests
-- fix paperclip security warning
-- allow to use existing User model

@@ -1,4 +1,4 @@
-class DropColumnAccessKeyFromUsers < ActiveRecord::Migration
+class BoxroomDropColumnAccessKeyFromUsers < ActiveRecord::Migration
   def self.up
     remove_column :boxroom_users, :access_key
   end

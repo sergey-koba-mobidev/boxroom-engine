@@ -33,7 +33,7 @@
       <%= yield %>
     </div>
     <div id="footer_spacer"></div>
-    <%= render 'boxroom/shared/footer' %>
+    <%= render 'boxroom/shared/footer' if Boxroom.configuration.show_footer %>
   </div>
 </body>
 </html>
