@@ -8,9 +8,9 @@ module Boxroom
 
     def file_icon(extension)
       if extension && FileTest.exists?(Rails.root.join('app', 'assets', 'images', 'fileicons', "#{extension.downcase}.png"))
-        "fileicons/#{extension.downcase}.png"
+        "boxroom/fileicons/#{extension.downcase}.png"
       else
-        'file.png'
+        'boxroom/file.png'
       end
     end
   end

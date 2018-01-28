@@ -22,6 +22,9 @@ Boxroom.configure do |config|
   config.site_name = 'Boxroom'
   config.logo = 'boxroom/logo.png'
   config.show_footer = true
+  config.show_users = true
+  config.show_groups = true
+  config.show_settings = true
   config.sign_out_path = nil # pass string to redirect to after sign out. '/dashboard' for example
 end
 ```

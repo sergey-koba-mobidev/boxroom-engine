@@ -5,7 +5,7 @@ jQuery ->
       $('#user_file_attachment').prop('disabled', true)
       file = data.files[0]
       folder = $('#target_folder_id').val()
-      $.getJSON "/file_exists?name=#{encodeURIComponent(file.name)}&folder=#{encodeURIComponent(folder)}", (exists) ->
+      $.getJSON document.location.pathname.split('/folders')[0] + "/file_exists?name=#{encodeURIComponent(file.name)}&folder=#{encodeURIComponent(folder)}", (exists) ->
         data.context = $(tmpl("template-upload", file).trim())
         $('#progress').append(data.context)
         if exists
@@ -15,7 +15,7 @@ jQuery ->
           data.context.find('.exists_message').show()
           $('#user_file_attachment').prop('disabled', false)
         else
-          data.submit()          
+          data.submit()
     progress: (e, data) ->
       if data.context
         progress = parseInt(data.loaded / data.total * 100)
@@ -25,4 +25,4 @@ jQuery ->
           data.context.find('.tick').show()
     stop: (e) ->
       folder = $('#target_folder_id').val()
-      window.location.href = "/folders/#{folder}"
+      window.location.href = document.location.pathname.split('/folders')[0] + "/folders/#{folder}"
