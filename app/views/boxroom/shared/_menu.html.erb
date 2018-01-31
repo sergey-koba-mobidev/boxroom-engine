@@ -9,7 +9,9 @@
             <% if Boxroom.configuration.show_groups %>
                 <%= link_to t(:groups), groups_path %>
             <% end %>
-            <%= link_to t(:shared_files), share_links_path %>
+            <% if Boxroom.configuration.show_shared_files %>
+                <%= link_to t(:shared_files), share_links_path %>
+            <% end %>
         <% end -%>
     <% end -%>
     &nbsp;

@@ -25,6 +25,7 @@ Boxroom.configure do |config|
   config.show_users = true
   config.show_groups = true
   config.show_settings = true
+  config.show_shared_files = true
   config.sign_out_path = nil # pass string to redirect to after sign out. '/dashboard' for example
 end
 ```

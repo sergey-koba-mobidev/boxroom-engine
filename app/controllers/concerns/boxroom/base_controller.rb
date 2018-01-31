@@ -21,7 +21,19 @@ module Boxroom
     protected
 
     def clipboard
-      session[:clipboard] ||= Clipboard.new
+      cl = session[:clipboard]
+      cl = Clipboard.new if cl.nil?
+      if cl.kind_of? Hash # Init clipboard from Hash
+        new_cl = Clipboard.new
+        cl['folders'].each do |folder_id|
+          new_cl.add(Folder.find(folder_id))
+        end
+        cl['files'].each do |file_id|
+          new_cl.add(UserFile.find(file_id))
+        end
+        cl = new_cl
+      end
+      cl
     end
 
     def current_user

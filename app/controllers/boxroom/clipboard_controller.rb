@@ -11,18 +11,24 @@ module Boxroom
 
     # @item is set in require_existing_item
     def create
-      clipboard.add(@item)
+      cl = clipboard
+      cl.add(@item)
+      session[:clipboard] = cl
       redirect_to folder_url(params[:folder_id]), :notice => t(:added_to_clipboard)
     end
 
     # @item is set in require_existing_item
     def destroy
-      clipboard.remove(@item)
+      cl = clipboard
+      cl.remove(@item)
+      session[:clipboard] = cl
       redirect_to folder_url(params[:folder_id])
     end
 
     def reset
-      clipboard.reset
+      cl = clipboard
+      cl.reset
+      session[:clipboard] = cl
       redirect_to folder_url(params[:folder_id])
     end
 
@@ -40,7 +46,9 @@ module Boxroom
     # @target_folder is set in require_existing_target_folder
     def paste(action)
       @item.send(action, @target_folder)
-      clipboard.remove(@item)
+      cl = clipboard
+      cl.remove(@item)
+      session[:clipboard] = cl
       redirect_to folder_url(params[:folder_id])
     rescue ActiveRecord::RecordInvalid
       redirect_to folder_url(params[:folder_id]), :alert => t("could_not_#{action}", :type => t(params[:type]))
