@@ -2,6 +2,7 @@ jQuery ->
   $('#new_user_file').fileupload
     dataType: 'script'
     add: (e, data) ->
+      $('#attachment').prop('disabled', true)
       $('#user_file_attachment').prop('disabled', true)
       file = data.files[0]
       folder = $('#target_folder_id').val()
@@ -23,6 +24,9 @@ jQuery ->
         if data.loaded == data.total
           data.context.find('.spinner').hide()
           data.context.find('.tick').show()
+    progressall: (e, data) ->
+      if data.loaded == data.total
+        $('#server_wait').show()
     stop: (e) ->
       folder = $('#target_folder_id').val()
       window.location.href = document.location.pathname.split('/folders')[0] + "/folders/#{folder}"

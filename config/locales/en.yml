@@ -254,6 +254,7 @@
   upload_file: Upload files
   upload: Upload
   exists_already: exists already
+  server_wait: 'Please wait while server is processing files. It could take several minutes for big files!'
 
   #folders/edit
   rename_folder: Rename folder

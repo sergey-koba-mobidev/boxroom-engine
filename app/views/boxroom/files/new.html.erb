@@ -1,16 +1,17 @@
 <% content_for :title, t(:upload_file) -%>
 
 <h1><%= content_for :title %></h1>
-<%= form_for [@target_folder, @file], :url => { :action => 'create' } do |f| %>
-  <p>
-    <%= hidden_field_tag :target_folder_id, @target_folder.id %>
-    <%= file_field_tag :attachment, :multiple => true, :name => 'user_file[attachment]' %>
-  </p>
-  <div id="progress">
-  </div>
-  <p>
-    <%= link_to t(:back), @target_folder %>
-  </p>
+<%= form_for [@target_folder, @file], :url => {:action => 'create'} do |f| %>
+    <p>
+      <%= hidden_field_tag :target_folder_id, @target_folder.id %>
+      <%= file_field_tag :attachment, :multiple => true, :name => 'user_file[attachment]' %>
+    </p>
+    <div id="server_wait" class="red" style="display:none;"><strong><%= t(:server_wait) %></strong></div>
+    <div id="progress">
+    </div>
+    <p>
+      <%= link_to t(:back), @target_folder %>
+    </p>
 <% end %>
 
 <script id="template-upload" type="text/x-tmpl">
@@ -22,4 +23,5 @@
   <span class="percentage">0%</span>
   <span class="exists_message red" style="display:none;"><strong><%= t(:exists_already) %></strong></span>
 </p>
+
 </script>
