@@ -1,6 +1,6 @@
 module Boxroom
   class UserFile < ActiveRecord::Base
-    has_attached_file :attachment, :path => ':rails_root/uploads/:rails_env/:id/:style/:id', :restricted_characters => Boxroom::RESTRICTED_CHARACTERS
+    has_attached_file :attachment, :path => ":rails_root/#{Boxroom.configuration.uploads_path}/:rails_env/:id/:style/:id", :restricted_characters => Boxroom::RESTRICTED_CHARACTERS
     do_not_validate_attachment_file_type :attachment
 
     belongs_to :folder
@@ -16,7 +16,7 @@ module Boxroom
       new_file.folder = target_folder
       new_file.save!
 
-      path = "#{Rails.root}/uploads/#{Rails.env}/#{new_file.id}/original"
+      path = "#{Rails.root}/#{Boxroom.configuration.uploads_path}/#{Rails.env}/#{new_file.id}/original"
       FileUtils.mkdir_p path
       FileUtils.cp_r self.attachment.path, "#{path}/#{new_file.id}"
 

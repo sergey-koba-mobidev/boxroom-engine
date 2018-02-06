@@ -21,6 +21,7 @@ mount Boxroom::Engine => "/boxroom"
 Boxroom.configure do |config|
   config.site_name = 'Boxroom'
   config.logo = 'boxroom/logo.png'
+  config.uploads_path = 'uploads'
   config.show_footer = true
   config.show_users = true
   config.show_groups = true
