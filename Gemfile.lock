@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    boxroom (0.1.0)
+    boxroom (0.1.1)
       acts_as_tree
       dynamic_form
       jquery-fileupload-rails

@@ -22,8 +22,20 @@ module Boxroom
 
     # @target_folder is set in require_existing_target_folder
     def create
-      @file = @target_folder.user_files.create(permitted_params.user_file)
-      render :nothing => true
+      existing_file = UserFile.where(
+          attachment_file_name: permitted_params.user_file["attachment"].original_filename,
+          attachment_content_type: permitted_params.user_file["attachment"].content_type,
+          folder_id: params[:target_folder_id]
+      ).first
+
+      if existing_file # Resume upload
+        existing_file.update_attribute(:attachment_file_size, existing_file.attachment_file_size + permitted_params.user_file["attachment"].size)
+        File.open("#{Rails.root}/#{Boxroom.configuration.uploads_path}/#{Rails.env}/#{existing_file.id}/original/#{existing_file.id}", "ab") {|f| f.write(permitted_params.user_file["attachment"].read)}
+      else
+        @file = @target_folder.user_files.create(permitted_params.user_file)
+      end
+
+      head :ok
     end
 
     # @file and @folder are set in require_existing_file

@@ -1,6 +1,7 @@
 jQuery ->
   $('#new_user_file').fileupload
     dataType: 'script'
+    maxChunkSize: 8388608 # 8 MB
     add: (e, data) ->
       $('#attachment').prop('disabled', true)
       $('#user_file_attachment').prop('disabled', true)
