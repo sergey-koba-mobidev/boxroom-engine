@@ -281,6 +281,7 @@
   add_to_clipboard: Copia negli appunti
   download: Scarica
   share: Condividi
+  search: Search files and folders inside current folder... Press Enter to search
 
   #groups/edit
   rename_group: Rinomina gruppo

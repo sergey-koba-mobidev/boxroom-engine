@@ -275,6 +275,7 @@ nl:
   add_to_clipboard: Op klembord plaatsen
   download: Download
   share: Delen
+  search: Search files and folders inside current folder... Press Enter to search
 
   #groups/edit
   rename_group: Groepnaam wijzigen

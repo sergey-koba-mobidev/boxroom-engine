@@ -273,6 +273,7 @@
   add_to_clipboard: Agregar al portapapeles
   download: Descargar
   share: Compartir
+  search: Search files and folders inside current folder... Press Enter to search
 
   #groups/edit
   rename_group: Renombrar grupo

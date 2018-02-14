@@ -1,4 +1,4 @@
-class BoxroomCreateUsers < ActiveRecord::Migration
+class BoxroomCreateUsers < ActiveRecord::Migration[5.0]
   def self.up
     create_table :boxroom_users do |t|
       t.string  :name

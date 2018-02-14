@@ -273,6 +273,7 @@
   add_to_clipboard: 加到剪贴板
   download: 下载
   share: 共享
+  search: Search files and folders inside current folder... Press Enter to search
 
   #groups/edit
   rename_group: 群组重新命名

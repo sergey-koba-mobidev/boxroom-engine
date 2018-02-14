@@ -274,6 +274,7 @@
   add_to_clipboard: Add to clipboard
   download: Download
   share: Share
+  search: Search files and folders inside current folder... Press Enter to search
 
   #groups/edit
   rename_group: Rename group

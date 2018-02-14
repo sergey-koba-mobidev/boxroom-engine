@@ -1,0 +1,9 @@
+<% content_for :title, 'Search' -%>
+
+<h1><%= "Search `#{@term}` in #{@folder.name}" %></h1>
+
+<%= concept(Boxroom::Folder::Cell::Show, nil,
+            folders: @folders,
+            files: @files,
+            current_user: current_user
+    ) %>

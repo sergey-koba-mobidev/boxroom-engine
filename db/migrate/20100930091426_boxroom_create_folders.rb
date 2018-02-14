@@ -1,4 +1,4 @@
-class BoxroomCreateFolders < ActiveRecord::Migration
+class BoxroomCreateFolders < ActiveRecord::Migration[5.0]
   def self.up
     create_table :boxroom_folders do |t|
       t.string :name

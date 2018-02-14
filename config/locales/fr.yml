@@ -270,6 +270,7 @@
   add_to_clipboard: Ajouter au presse-papier
   download: Télécharger
   share: Partager
+  search: Search files and folders inside current folder... Press Enter to search
 
   #groups/edit
   rename_group: Renommer groupe

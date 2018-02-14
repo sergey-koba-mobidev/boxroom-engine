@@ -281,6 +281,7 @@ de:
   add_to_clipboard: Zur Zwischenablage hinzufügen
   download: Herunterladen
   share: Freigeben
+  search: Search files and folders inside current folder... Press Enter to search
 
   #groups/edit
   rename_group: Gruppe umbenennen

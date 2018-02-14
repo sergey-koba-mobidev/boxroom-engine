@@ -1,4 +1,4 @@
-class BoxroomCreateShareLinks < ActiveRecord::Migration
+class BoxroomCreateShareLinks < ActiveRecord::Migration[5.0]
   def self.up
     create_table :boxroom_share_links do |t|
       t.string :emails
