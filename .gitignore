@@ -8,3 +8,4 @@ test/dummy/tmp/
 test/dummy/uploads/
 .idea
 .byebug_history
+*.gem

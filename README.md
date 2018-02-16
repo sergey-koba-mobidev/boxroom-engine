@@ -9,7 +9,7 @@ and share files. Admins can manage users, groups and permissions.
 ![Boxroom](https://res.cloudinary.com/skoba/image/upload/v1518819948/Boxroom_vzqhre.png)
 
 ## Install
-- add to Gemfile `gem 'boxroom', github: 'sergey-koba-mobidev/boxroom-engine'`
+- add to Gemfile `gem 'boxroom'`
 - run `rails boxroom:install:migrations`
 - run `rails db:migrate`
 - mount engine in `config/routes.rb`
