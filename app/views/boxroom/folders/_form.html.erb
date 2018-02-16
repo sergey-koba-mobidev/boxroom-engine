@@ -1,9 +1,19 @@
-<%= f.error_messages %>
-<p>
-  <%= f.label :name %>:<br>
-  <%= f.text_field :name, { :class => 'text_input' } %>
-</p>
-<p>
-  <%= f.submit t(:save) %> &nbsp; &mdash; &nbsp;
-  <%= link_to t(:back), @folder.parent %>
-</p>
+<% if f.error_messages.size > 0 %>
+    <div class="notification is-danger">
+      <%= f.error_messages %>
+    </div>
+<% end %>
+<div class="field">
+  <%= f.label :name, class: 'label' %>
+  <div class="control">
+    <%= f.text_field :name, class: 'input' %>
+  </div>
+</div>
+<div class="field is-grouped">
+  <div class="control">
+    <%= f.submit t(:save), class: 'button is-link' %>
+  </div>
+  <div class="control">
+    <%= link_to t(:back), @folder.parent, class: 'button is-text' %>
+  </div>
+</div>

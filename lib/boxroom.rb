@@ -6,6 +6,8 @@ require 'acts_as_tree'
 require 'paperclip'
 require 'boxroom/configuration'
 require 'paperclip/media_type_spoof_detector'
+require 'bulma-rails'
+require 'font-awesome-rails'
 
 require 'cells/rails'
 require 'cells-erb'

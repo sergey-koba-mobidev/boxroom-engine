@@ -1,18 +1,30 @@
 <% content_for :title, t(:reset_password) -%>
 
-<h1><%= content_for :title %></h1>
-<%= form_for @user, :url => { :action => 'update' } do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= label_tag :password, t(:password) %>:<br>
-    <%= f.password_field :password, { :class => 'text_input' } %>
-  </p>
-  <p>
-    <%= label_tag :confirm_password, t(:confirm_password) %>:<br>
-    <%= f.password_field :password_confirmation, { :class => 'text_input' } %>
-  </p>
-  <p>
-    <%= f.submit t(:reset_password) %> &nbsp; &mdash; &nbsp;
-    <%= link_to t(:back), new_session_path %>
-  </p>
+<h1 class="title"><%= content_for :title %></h1>
+<%= form_for @user, :url => {:action => 'update'} do |f| %>
+    <% if f.error_messages.size > 0 %>
+        <div class="notification is-danger">
+          <%= f.error_messages %>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= label_tag :password, t(:password), class: 'label' %>
+      <div class="control">
+        <%= f.password_field :password, class: 'input' %>
+      </div>
+    </div>
+    <div class="field">
+      <%= label_tag :confirm_password, t(:confirm_password), class: 'label' %>
+      <div class="control">
+        <%= f.password_field :password_confirmation, class: 'input' %>
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <%= f.submit t(:reset_password), class: 'button is-link' %>
+      </div>
+      <div class="control">
+        <%= link_to t(:back), new_session_path, class: 'button is-text' %>
+      </div>
+    </div>
 <% end %>

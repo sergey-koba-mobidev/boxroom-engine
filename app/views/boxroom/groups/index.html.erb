@@ -1,29 +1,42 @@
 <% content_for :title, t(:groups) -%>
 
-<h1><%= content_for :title %></h1>
-<p>
-  <span class="group_menu"><%= image_tag('boxroom/group_add.png', :alt => t(:create_a_new_group)) %> <%= link_to t(:create_a_new_group), new_group_path %></span>
-</p>
-<table>
+<h1 class="title"><%= content_for :title %></h1>
+
+<a class="button is-primary" href="<%= new_group_path %>">
+    <span class="icon">
+      <i class="fa fa-group"></i>
+    </span>
+  <span><%= t(:create_a_new_group) %></span>
+</a>
+
+<table class="table">
   <tr>
     <th></th>
     <th><%= t :name %></th>
     <th></th>
   </tr>
-<% @groups.each do |group| -%>
-  <tr class="<%= cycle('even','odd') %>">
-  <% if group.admins_group? -%>
-    <td><%= image_tag('boxroom/group_grey.png') %></td>
-    <td class="group_name disabled"><%= group.name %></td>
-    <td></td>
-  <% else -%>
-    <td><%= image_tag('boxroom/group.png') %></td>
-    <td class="group_name"><%= group.name %></td>
-    <td>
-      <%= link_to image_tag('boxroom/edit.png', :alt => t(:edit)), edit_group_path(group), :title => t(:edit) %>&nbsp;
-      <%= link_to image_tag('boxroom/delete.png', :alt => t(:delete_item)), group_path(group), :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item) %>
-    </td>
+  <% @groups.each do |group| -%>
+      <tr class="<%= cycle('even', 'odd') %>">
+        <% if group.admins_group? -%>
+            <td>
+              <span class="icon is-small">
+                <i class="fa fa-group"></i>
+              </span>
+            </td>
+            <td class="group_name disabled"><%= group.name %></td>
+            <td></td>
+        <% else -%>
+            <td>
+              <span class="icon is-small">
+                <i class="fa fa-group"></i>
+              </span>
+            </td>
+            <td class="group_name"><%= group.name %></td>
+            <td>
+              <%= link_to '<span class="icon is-small"><i class="fa fa-edit"></i></span>'.html_safe, edit_group_path(group), :title => t(:edit) %>&nbsp;
+              <%= link_to '<span class="icon is-small"><i class="fa fa-remove"></i></span>'.html_safe, group_path(group), :method => :delete, :data => {:confirm => t(:are_you_sure)}, :title => t(:delete_item) %>
+            </td>
+        <% end -%>
+      </tr>
   <% end -%>
-  </tr>
-<% end -%>
 </table>

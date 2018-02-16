@@ -1,27 +1,45 @@
 <% content_for :title, t(:upload_file) -%>
 
-<h1><%= content_for :title %></h1>
+<h1 class="title"><%= content_for :title %></h1>
 <%= form_for [@target_folder, @file], :url => {:action => 'create'} do |f| %>
-    <p>
-      <%= hidden_field_tag :target_folder_id, @target_folder.id %>
-      <%= file_field_tag :attachment, :multiple => true, :name => 'user_file[attachment]' %>
-    </p>
-    <div id="server_wait" class="red" style="display:none;"><strong><%= t(:server_wait) %></strong></div>
-    <div id="progress">
+    <%= hidden_field_tag :target_folder_id, @target_folder.id %>
+    <div class="file">
+      <label class="file-label">
+        <%= file_field_tag :attachment, multiple: true, name: 'user_file[attachment]', class: 'file-input' %>
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fa fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Choose a file…
+          </span>
+        </span>
+      </label>
     </div>
-    <p>
-      <%= link_to t(:back), @target_folder %>
-    </p>
+
+    <div class="notification is-warning" id="server_wait" style="display:none;">
+      <%= t(:server_wait) %>
+    </div>
+
+    <table id="progress" class="table">
+    </table>
+
+    <div class="field">
+      <div class="control">
+        <%= link_to t(:back), @target_folder, class: 'button is-text' %>
+      </div>
+    </div>
 <% end %>
 
 <script id="template-upload" type="text/x-tmpl">
-<p>
-  <%= image_tag 'boxroom/spinner.gif', :class => 'spinner' %>
-  <%= image_tag 'boxroom/failed.png', :class => 'failed', :style => 'display:none;' %>
-  <%= image_tag 'boxroom/tick.png', :class => 'tick', :style => 'display:none;' %>
-  <span class="status">Uploading <strong>{%= o.name %}</strong>...</span>
-  <span class="percentage">0%</span>
-  <span class="exists_message red" style="display:none;"><strong><%= t(:exists_already) %></strong></span>
-</p>
-
+<tr>
+  <td>
+    <%= image_tag 'boxroom/spinner.gif', :class => 'spinner' %>
+    <%= image_tag 'boxroom/failed.png', :class => 'failed', :style => 'display:none;' %>
+    <%= image_tag 'boxroom/tick.png', :class => 'tick', :style => 'display:none;' %>
+  </td>
+  <td class="status">Uploading <strong>{%= o.name %}</strong>...</td>
+  <td class="percentage">0%</td>
+  <td class="exists_message is-danger" style="display:none;"><strong><%= t(:exists_already) %></strong></td>
+</tr>
 </script>

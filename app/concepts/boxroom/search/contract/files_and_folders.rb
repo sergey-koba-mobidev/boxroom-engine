@@ -3,6 +3,7 @@ module Boxroom::Search::Contract
     property :term, virtual: true
     property :folder_id, virtual: true
 
-    validates :term, :folder_id, presence: true
+    validates :folder_id, presence: true
+    validates :term, length: {minimum: 3}
   end
 end

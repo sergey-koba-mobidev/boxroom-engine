@@ -12,6 +12,9 @@ module Boxroom
       else
         @folders = []
         @files = []
+        if result['contract.default'].errors.present?
+          flash[:alert] = result['contract.default'].errors.full_messages.uniq.join(', ')
+        end
       end
     end
   end

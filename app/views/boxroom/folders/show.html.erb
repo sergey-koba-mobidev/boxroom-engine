@@ -1,33 +1,63 @@
 <% content_for :title, @folder.name -%>
 
-<h1><%= content_for :title %></h1>
+<h1 class="title"><%= content_for :title %></h1>
 <% unless @folder.is_root? -%>
-    <p>
-      <%= breadcrumbs(@folder) %>
-      <span class="breadcrumb nowrap"><%= @folder.name %></span>
-    </p>
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+      <ul>
+        <%= breadcrumbs(@folder) %>
+        <li class="is-active"><a href="#" aria-current="page"><%= @folder.name %></a></li>
+      </ul>
+    </nav>
 <% end -%>
-<p>
-  <% if current_user.can_create(@folder) -%>
-      <span class="folder_menu"><%= image_tag('boxroom/folder_add.png', :alt => t(:create_a_new_folder)) %> <%= link_to t(:create_a_new_folder), new_folder_folder_path(@folder) %></span>
-      <span class="folder_menu"><%= image_tag('boxroom/file_add.png', :alt => t(:upload_a_file)) %> <%= link_to t(:upload_a_file), new_folder_file_path(@folder) %></span>
-  <% end -%>
-  <% if current_user.member_of_admins? -%>
-      <span class="folder_menu" id="permissions_link"><span><%= image_tag('boxroom/permissions.png', :alt => t(:permissions)) %> <%= link_to t(:permissions), '#', :class => 'permissions_link' %></span></span>
-  <% end -%>
-  <span class="folder_menu" id="clipboard_link"><span><%= image_tag('boxroom/clipboard.png', :alt => t(:clipboard)) %> <%= link_to t(:clipboard), '#', :class => 'clipboard_link' %></span></span>
-</p>
-<p>
-  <%= form_tag(search_path, method: :get) do %>
-      <%= text_field_tag 'term', nil, placeholder: t(:search), size: 71 %>
-      <%= hidden_field_tag 'folder_id', @folder.id %>
-  <% end %>
-</p>
 
-<%= concept(Boxroom::Folder::Cell::Show, @folder,
-            folders: @folder.children,
-            files: @folder.user_files,
-            current_user: current_user) %>
+<div class="tabs">
+  <ul>
+    <% if current_user.can_create(@folder) -%>
+        <li>
+          <a href="<%= new_folder_folder_path(@folder) %>">
+            <span class="icon is-small"><i class="fa fa-folder"></i></span>
+            <span><%= t(:create_a_new_folder) %></span>
+          </a>
+        </li>
+        <li>
+          <a href="<%= new_folder_file_path(@folder) %>">
+            <span class="icon is-small"><i class="fa fa-upload"></i></span>
+            <span><%= t(:upload_a_file) %></span>
+          </a>
+        </li>
+    <% end -%>
+    <% if current_user.member_of_admins? -%>
+        <li>
+          <a href="#" id="permissions_link" class="permissions_link">
+            <span class="icon is-small"><i class="fa fa-lock"></i></span>
+            <span><%= t(:permissions) %></span>
+          </a>
+        </li>
+    <% end -%>
+    <li>
+      <a href="#" id="clipboard_link" class="clipboard_link">
+        <span class="icon is-small"><i class="fa fa-clipboard"></i></span>
+        <span><%= t(:clipboard) %></span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<%= form_tag(search_path, method: :get) do %>
+    <div class="field">
+      <div class="control">
+        <%= text_field_tag 'term', nil, placeholder: t(:search), size: 71, class: 'input' %>
+      </div>
+    </div>
+    <%= hidden_field_tag 'folder_id', @folder.id %>
+<% end %>
+
+<div id="files_and_folders">
+  <%= concept(Boxroom::Folder::Cell::Show, @folder,
+              folders: @folder.children,
+              files: @folder.user_files,
+              current_user: current_user) %>
+</div>
 
 <% if current_user.member_of_admins? -%>
     <div id="permissions" style="display:none;">

@@ -1,6 +1,7 @@
 <% content_for :title, t(:share_file) -%>
 
-<h1><%= content_for :title %></h1>
+<h1 class="title"><%= content_for :title %></h1>
+
 <%= form_for [@file, @share_link], :url => { :action => 'create' } do |f| %>
   <%= f.error_messages :header_message => t(:share_link_could_not_be_sent) %>
   <p>

@@ -1,10 +1,9 @@
 <% if clipboard.empty? -%>
-    <p class="clipboard_empty">
-      <%= image_tag('boxroom/information.png', :alt => 'Notice', :class => 'clipboard_info_image') %>
+    <div class="notification is-info">
       <%= render 'boxroom/clipboard/clipboard_empty' %>
-    </p>
+    </div>
 <% else -%>
-    <table id="clipboard_table">
+    <table id="clipboard_table" class="table">
       <tr>
         <th></th>
         <th><%= t :name %></th>
@@ -12,24 +11,24 @@
       </tr>
       <% reset_cycle -%>
       <% clipboard.folders.each do |item| -%>
-          <tr class="<%= cycle('even','odd') %>">
+          <tr class="<%= cycle('even', 'odd') %>">
             <td><%= image_tag('boxroom/folder.png') %></td>
             <td class="clipboard_item"><%= item.name %></td>
             <td>
               <% if current_user.can_create(@folder) -%>
                   <%= link_to image_tag('boxroom/copy.png', :alt => t(:copy)),
-                              { :controller => :clipboard, :action => :copy, :id => item.id, :type => 'folder', :folder_id => @folder, :authenticity_token => form_authenticity_token },
+                              {:controller => :clipboard, :action => :copy, :id => item.id, :type => 'folder', :folder_id => @folder, :authenticity_token => form_authenticity_token},
                               :method => :post, :title => t(:copy_folder)
                   %>&nbsp;
               <% end -%>
               <% if current_user.can_create(@folder) && current_user.can_delete(item) -%>
                   <%= link_to image_tag('boxroom/move.png', :alt => t(:move)),
-                              { :controller => :clipboard, :action => :move, :id => item.id, :type => 'folder', :folder_id => @folder, :authenticity_token => form_authenticity_token },
-                              :method => :post, :title => t(:move_folder), :data => { :confirm => t(:are_you_sure) }
+                              {:controller => :clipboard, :action => :move, :id => item.id, :type => 'folder', :folder_id => @folder, :authenticity_token => form_authenticity_token},
+                              :method => :post, :title => t(:move_folder), :data => {:confirm => t(:are_you_sure)}
                   %>&nbsp;
               <% end -%>
               <%= link_to image_tag('boxroom/delete.png', :alt => t(:delete_item)),
-                          { :controller => :clipboard, :action => :destroy, :id => item.id, :type => 'folder', :folder_id => @folder, :authenticity_token => form_authenticity_token },
+                          {:controller => :clipboard, :action => :destroy, :id => item.id, :type => 'folder', :folder_id => @folder, :authenticity_token => form_authenticity_token},
                           :method => :delete, :title => t(:remove_from_clipboard)
               %>
             </td>
@@ -41,30 +40,33 @@
             <td class="clipboard_item"><%= item.attachment_file_name %></td>
             <td>
               <% if current_user.can_create(@folder) -%>
-                  <%= link_to image_tag('boxroom/copy.png', :alt => t(:copy)),
-                              { :controller => :clipboard, :action => :copy, :id => item.id, :type => 'file', :folder_id => @folder, :authenticity_token => form_authenticity_token },
+                  <%= link_to '<span class="icon is-small"><i class="fa fa-copy"></i></span>'.html_safe,
+                              {:controller => :clipboard, :action => :copy, :id => item.id, :type => 'file', :folder_id => @folder, :authenticity_token => form_authenticity_token},
                               :method => :post, :title => t(:copy_file)
                   %>&nbsp;
               <% end -%>
               <% if current_user.can_create(@folder) && current_user.can_delete(item.folder) -%>
-                  <%= link_to image_tag('boxroom/move.png', :alt => t(:move)),
-                              { :controller => :clipboard, :action => :move, :id => item.id, :type => 'file', :folder_id => @folder, :authenticity_token => form_authenticity_token },
-                              :method => :post, :title => t(:move_file), :data => { :confirm => t(:are_you_sure) }
+                  <%= link_to '<span class="icon is-small"><i class="fa fa-cut"></i></span>'.html_safe,
+                              {:controller => :clipboard, :action => :move, :id => item.id, :type => 'file', :folder_id => @folder, :authenticity_token => form_authenticity_token},
+                              :method => :post, :title => t(:move_file), :data => {:confirm => t(:are_you_sure)}
                   %>&nbsp;
               <% end -%>
-              <%= link_to image_tag('boxroom/delete.png', :alt => t(:delete_item)),
-                          { :controller => :clipboard, :action => :destroy, :id => item.id, :type => 'file', :folder_id => @folder, :authenticity_token => form_authenticity_token },
+              <%= link_to '<span class="icon is-small"><i class="fa fa-remove"></i></span>'.html_safe,
+                          {:controller => :clipboard, :action => :destroy, :id => item.id, :type => 'file', :folder_id => @folder, :authenticity_token => form_authenticity_token},
                           :method => :delete, :title => t(:remove_from_clipboard)
               %>
             </td>
           </tr>
       <% end -%>
     </table>
-    <p>
-      <%= button_to t(:clear_clipboard),
-                    { :controller => :clipboard, :action => :reset, :folder_id => @folder, :authenticity_token => form_authenticity_token }, :method => :put
-      %>
-      &nbsp; &mdash; &nbsp;
-      <%= link_to t(:back), '#', :class => 'back_link' %>
-    </p>
+    <div class="field is-grouped">
+      <div class="control">
+        <%= button_to t(:clear_clipboard),
+                      {:controller => :clipboard, :action => :reset, :folder_id => @folder, :authenticity_token => form_authenticity_token}, :method => :put, class: 'button is-link'
+        %>
+      </div>
+      <div class="control">
+        <%= link_to t(:back), '#', class: 'back_link button is-text' %>
+      </div>
+    </div>
 <% end -%>

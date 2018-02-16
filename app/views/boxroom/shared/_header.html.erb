@@ -1,14 +1,45 @@
-<div id="header">
-  <% if signed_in? -%>
-      <div class="user_welcome">
-        <p>
-          <%= t :hello %>, <%= current_user.name %>!<br>
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <%= link_to image_tag(Boxroom.configuration.logo, alt: 'Boxroom'), root_path, {class: 'navbar-item'} %>
+
+    <button class="button navbar-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-start">
+      <% if signed_in? -%>
+          <%= link_to t(:folders), folders_path, class: 'navbar-item' %>
+          <% if current_user.member_of_admins? -%>
+              <% if Boxroom.configuration.show_users %>
+                  <%= link_to t(:users), users_path, class: 'navbar-item' %>
+              <% end %>
+              <% if Boxroom.configuration.show_groups %>
+                  <%= link_to t(:groups), groups_path, class: 'navbar-item' %>
+              <% end %>
+              <% if Boxroom.configuration.show_shared_files %>
+                  <%= link_to t(:shared_files), share_links_path, class: 'navbar-item' %>
+              <% end %>
+          <% end -%>
+      <% end -%>
+    </div>
+
+    <div class="navbar-end">
+      <% if signed_in? -%>
+          <div class="navbar-item">
+            <%= t :hello %>, <b><%= current_user.name %></b>
+          </div>
           <% if Boxroom.configuration.show_settings %>
-              <%= link_to t(:settings), edit_user_path(current_user) %> |
+              <%= link_to t(:settings), edit_user_path(current_user), class: 'navbar-item' %>
           <% end %>
-          <%= link_to t(:sign_out), signout_path, :method => :delete %>
-        </p>
-      </div>
-  <% end -%>
-  <%= link_to image_tag(Boxroom.configuration.logo, :alt => 'Boxroom'), root_path %>
-</div>
+          <div class="navbar-item">
+            <%= link_to t(:sign_out), signout_path, method: :delete, class: 'button is-danger' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</nav>
+

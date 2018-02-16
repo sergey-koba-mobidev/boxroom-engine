@@ -1,14 +1,24 @@
 <% content_for :title, t(:rename_file) -%>
 
-<h1><%= content_for :title %></h1>
-<%= form_for @file, :url => { :action => 'update' } do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :name %>:<br>
-    <%= f.text_field :attachment_file_name %>
-  </p>
-  <p>
-    <%= f.submit t(:save) %> &nbsp; &mdash; &nbsp;
-    <%= link_to t(:back), @folder %>
-  </p>
+<h1 class="title"><%= content_for :title %></h1>
+<%= form_for @file, :url => {:action => 'update'} do |f| %>
+    <% if f.error_messages.size > 0 %>
+        <div class="notification is-danger">
+          <%= f.error_messages %>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :name, class: 'label' %>
+      <div class="control">
+        <%= f.text_field :attachment_file_name, class: 'input' %>
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <%= f.submit t(:save), class: 'button is-link' %>
+      </div>
+      <div class="control">
+        <%= link_to t(:back), @folder, class: 'button is-text' %>
+      </div>
+    </div>
 <% end %>

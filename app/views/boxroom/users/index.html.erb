@@ -1,12 +1,16 @@
 <% content_for :title, t(:users) -%>
 
-<h1><%= content_for :title %></h1>
-<p>
-  <span class="user_menu"><%= image_tag('boxroom/user_add.png', :alt => t(:create_a_new_user)) %> <%= link_to t(:create_a_new_user), new_user_path %></span>
-</p>
+<h1 class="title"><%= content_for :title %></h1>
 
-<h3><%= t :active_users %></h3>
-<table>
+<a class="button is-primary" href="<%= new_user_path %>">
+    <span class="icon">
+      <i class="fa fa-user-plus"></i>
+    </span>
+  <span><%= t(:create_a_new_user) %></span>
+</a>
+
+<h2 class="subtitle"><%= t :active_users %></h2>
+<table class="table">
   <tr>
     <th></th>
     <th><%= t :name %></th>
@@ -15,13 +19,17 @@
   </tr>
 <% @users.each do |user| -%>
   <tr class="<%= cycle('even','odd') %>">
-    <td><%= image_tag('boxroom/user.png') %></td>
+    <td>
+      <span class="icon">
+      <i class="fa fa-user-o"></i>
+    </span>
+    </td>
     <td class="user_name"><%= user.name %></td>
     <td class="user_email"><%= user.email %></td>
     <td>
-      <%= link_to image_tag('boxroom/edit.png', :alt => t(:edit)), edit_user_path(user), :title => t(:edit) %>&nbsp;
+      <%= link_to '<span class="icon is-small"><i class="fa fa-edit"></i></span>'.html_safe, edit_user_path(user), :title => t(:edit) %>&nbsp;
     <% unless user.is_admin -%>
-      <%= link_to image_tag('boxroom/delete.png', :alt => t(:delete_item)), user_path(user), :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item) %>
+      <%= link_to '<span class="icon is-small"><i class="fa fa-remove"></i></span>'.html_safe, user_path(user), :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item) %>
     <% end -%>
     </td>
   </tr>
@@ -29,8 +37,8 @@
 </table>
 
 <% unless @new_users.blank? -%>
-<h3><%= t :invited_users %></h3>
-<table>
+<h2 class="subtitle"><%= t :invited_users %></h2>
+<table class="table">
   <tr>
     <th></th>
     <th><%= t :email %></th>
@@ -49,9 +57,9 @@
     <% end -%>
     </td>
     <td>
-      <%= link_to image_tag('boxroom/extend.png', :alt => t(:extend_expiration_date)), extend_user_path(user), :method => :put, :title => t(:extend_expiration_date) %>&nbsp;
+      <%= link_to '<span class="icon is-small"><i class="fa fa-clock-o"></i></span>'.html_safe, extend_user_path(user), :method => :put, :title => t(:extend_expiration_date) %>&nbsp;
     <% unless user.is_admin -%>
-      <%= link_to image_tag('boxroom/delete.png', :alt => t(:delete_item)), user_path(user), :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item) %>
+      <%= link_to '<span class="icon is-small"><i class="fa fa-remove"></i></span>'.html_safe, user_path(user), :method => :delete, :data => { :confirm => t(:are_you_sure) }, :title => t(:delete_item) %>
     <% end -%>
     </td>
   </tr>

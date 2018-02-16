@@ -1,16 +1,22 @@
 <% content_for :title, t(:reset_password) -%>
 
-<h1><%= content_for :title %></h1>
-<p>
+<h1 class="title"><%= content_for :title %></h1>
+<h2 class="subtitle">
   <%= render 'message' %>
-</p>
+</h2>
 <%= form_tag(reset_password_index_path) do %>
-  <p>
-    <%= label_tag :email, t(:email) %>:<br>
-    <%= text_field_tag :email, nil, :class => 'text_input' %>
-  </p>
-  <p>
-    <%= submit_tag t(:send_email) %> &nbsp; &mdash; &nbsp;
-    <%= link_to t(:back), new_session_path %>
-  </p>
+    <div class="field">
+      <%= label_tag :email, t(:email), class: 'label' %>
+      <div class="control">
+        <%= text_field_tag :email, nil, class: 'input' %>
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <%= submit_tag t(:send_email), class: 'button is-link' %>
+      </div>
+      <div class="control">
+        <%= link_to t(:back), new_session_path, class: 'button is-text' %>
+      </div>
+    </div>
 <% end %>
