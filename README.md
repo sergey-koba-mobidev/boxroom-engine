@@ -43,5 +43,8 @@ Please feel free to leave an issue or PR.
 ## License
 The engine is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-## TODO:
-- fix tests
+## Roadmap:
+- tests for search
+- tag files
+- integrate with existing user model
+- support s3
