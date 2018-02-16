@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  def setup
+    DatabaseCleaner.clean
+    FileUtils.rm_rf(Dir["#{Rails.root}/#{Boxroom.configuration.uploads_path}"])
+  end
+
   test 'password is valid' do
     assert_raise(ActiveRecord::RecordInvalid) { create(:user, :password => '123456', :password_confirmation => '654321') }
     assert_raise(ActiveRecord::RecordInvalid) { create(:user, :password => '123') }
@@ -16,7 +21,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'name can be empty for a new user' do
     create(:user, :name => '', :email => 'test@test.com')
-    assert User.exists?(:name => '', :email => 'test@test.com')
+    assert Boxroom::User.exists?(:name => '', :email => 'test@test.com')
   end
 
   test 'signup_token and signup_token_expires_at are set for a new user' do
@@ -45,13 +50,13 @@ class UserTest < ActiveSupport::TestCase
 
   test 'name is unique' do
     create(:user, :name => 'Test')
-    assert User.exists?(:name => 'Test')
+    assert Boxroom::User.exists?(:name => 'Test')
     assert_raise(ActiveRecord::RecordInvalid) { create(:user, :name => 'Test') }
   end
 
   test 'email is unique' do
     create(:user, :email => 'test@test.com')
-    assert User.exists?(:email => 'test@test.com')
+    assert Boxroom::User.exists?(:email => 'test@test.com')
     assert_raise(ActiveRecord::RecordInvalid) { create(:user, :email => 'test@test.com') }
   end
 
@@ -63,7 +68,7 @@ class UserTest < ActiveSupport::TestCase
     assert_raise(ActiveRecord::RecordInvalid) { create(:user, :email => 'test@$%^.com') }
     assert_raise(ActiveRecord::RecordInvalid) { create(:user, :email => 'test@test.c') }
     assert_raise(ActiveRecord::RecordInvalid) { create(:user, :email => 'test@test.$$$') }
-    assert_nothing_raised(ActiveRecord::RecordInvalid) { create(:user, :email => 'test@test.com') }
+    assert_nothing_raised { create(:user, :email => 'test@test.com') }
   end
 
   test 'reset_password_token gets cleared' do
@@ -71,15 +76,15 @@ class UserTest < ActiveSupport::TestCase
     user = create(:user, :reset_password_token => token, :dont_clear_reset_password_token => true)
     assert_equal user.reset_password_token, token
 
-    user2 = User.find_by_reset_password_token(token)
+    user2 = Boxroom::User.find_by_reset_password_token(token)
     user2.save
     assert user2.reset_password_token.blank?
   end
 
   test 'root folder and admins group get created' do
     admin = create(:user, :is_admin => true)
-    assert_equal Folder.where(:name => 'Root folder').count, 1
-    assert_equal Group.where(:name => 'Admins').count, 1
+    assert_equal Boxroom::Folder.where(:name => 'Root folder').count, 1
+    assert_equal Boxroom::Group.where(:name => 'Admins').count, 1
     assert_equal admin.groups.count, 1
   end
 
@@ -94,7 +99,7 @@ class UserTest < ActiveSupport::TestCase
   test 'user permissions' do
     admin = create(:user, :is_admin => true)
     user = create(:user)
-    root = Folder.root
+    root = Boxroom::Folder.root
     folder = create(:folder)
     group = create(:group)
 
@@ -157,7 +162,7 @@ class UserTest < ActiveSupport::TestCase
     assert user.save
     assert_not_equal user.password_salt, salt
     assert_not_equal user.hashed_password, hash
-    assert User.authenticate(user.name, 'test1234')
+    assert Boxroom::User.authenticate(user.name, 'test1234')
   end
 
   test 'whether a user is member of admins or not' do
@@ -167,7 +172,7 @@ class UserTest < ActiveSupport::TestCase
     user = create(:user)
     assert !user.member_of_admins?
 
-    user.groups << Group.find_by_name('Admins')
+    user.groups << Boxroom::Group.find_by_name('Admins')
     assert user.member_of_admins?
   end
 
@@ -212,26 +217,26 @@ class UserTest < ActiveSupport::TestCase
 
   test 'authentication' do
     user = create(:user, :name => 'testname', :password => 'secret')
-    assert !User.authenticate(nil, nil)
-    assert !User.authenticate('', '')
-    assert !User.authenticate('testname', nil)
-    assert !User.authenticate('testname', '')
-    assert !User.authenticate(nil, 'secret')
-    assert !User.authenticate('', 'secret')
-    assert !User.authenticate('test', 'test')
-    assert User.authenticate('testname', 'secret')
+    assert !Boxroom::User.authenticate(nil, nil)
+    assert !Boxroom::User.authenticate('', '')
+    assert !Boxroom::User.authenticate('testname', nil)
+    assert !Boxroom::User.authenticate('testname', '')
+    assert !Boxroom::User.authenticate(nil, 'secret')
+    assert !Boxroom::User.authenticate('', 'secret')
+    assert !Boxroom::User.authenticate('test', 'test')
+    assert Boxroom::User.authenticate('testname', 'secret')
   end
 
   test 'whether there is an admin user or not' do
-    assert User.no_admin_yet?
+    assert Boxroom::User.no_admin_yet?
 
     normal_user = create(:user)
-    assert User.no_admin_yet?
+    assert Boxroom::User.no_admin_yet?
 
     # make normal_user admin
     normal_user.is_admin = true
     normal_user.save
 
-    assert !User.no_admin_yet?
+    assert !Boxroom::User.no_admin_yet?
   end
 end

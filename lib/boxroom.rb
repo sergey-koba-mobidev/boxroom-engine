@@ -5,7 +5,7 @@ require 'jquery-fileupload-rails'
 require 'acts_as_tree'
 require 'paperclip'
 require 'boxroom/configuration'
-require 'paperclip/media_type_spoof_detector'
+require 'paperclip/spoof_detector'
 require 'bulma-rails'
 require 'font-awesome-rails'
 

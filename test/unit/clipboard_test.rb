@@ -1,9 +1,14 @@
 require 'test_helper'
 
 class ClipboardTest < ActiveSupport::TestCase
+  def setup
+    DatabaseCleaner.clean
+    FileUtils.rm_rf(Dir["#{Rails.root}/#{Boxroom.configuration.uploads_path}"])
+  end
+
   test 'a folder can be added to the clipboard' do
     folder = create(:folder)
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     assert clipboard.folders.empty?
     assert clipboard.empty?
 
@@ -14,7 +19,7 @@ class ClipboardTest < ActiveSupport::TestCase
 
   test 'a file can be added to the clipboard' do
     file = create(:user_file)
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     assert clipboard.files.empty?
     assert clipboard.empty?
 
@@ -25,7 +30,7 @@ class ClipboardTest < ActiveSupport::TestCase
 
   test 'a folder can be removed from the clipboard' do
     folder = create(:folder)
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     clipboard.add(folder)
     assert_equal clipboard.folders.count, 1
     assert !clipboard.empty?
@@ -37,7 +42,7 @@ class ClipboardTest < ActiveSupport::TestCase
 
   test 'a file can be removed from the clipboard' do
     file = create(:user_file)
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     clipboard.add(file)
     assert_equal clipboard.files.count, 1
     assert !clipboard.empty?
@@ -49,7 +54,7 @@ class ClipboardTest < ActiveSupport::TestCase
 
   test 'the same folder cannot be added twice' do
     folder = create(:folder)
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     clipboard.add(folder)
     assert_equal clipboard.folders.count, 1
 
@@ -63,7 +68,7 @@ class ClipboardTest < ActiveSupport::TestCase
 
   test 'the same file cannot be added twice' do
     file = create(:user_file)
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     clipboard.add(file)
     assert_equal clipboard.files.count, 1
 
@@ -77,7 +82,7 @@ class ClipboardTest < ActiveSupport::TestCase
 
   test 'when a folder is updated the referenced folder on the clipboard must also change' do
     folder = create(:folder, :name => 'Test')
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     clipboard.add(folder)
     assert_equal clipboard.folders.first.name, 'Test'
 
@@ -87,7 +92,7 @@ class ClipboardTest < ActiveSupport::TestCase
 
   test 'when a file is updated the referenced file on the clipboard must also change' do
     file = create(:user_file)
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     clipboard.add(file)
     assert_not_equal clipboard.files.first.attachment_file_name, 'Name changed.txt'
 
@@ -97,7 +102,7 @@ class ClipboardTest < ActiveSupport::TestCase
 
   test 'a deleted folder must also be deleted from the clipboard' do
     folder = create(:folder)
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     clipboard.add(folder)
     assert !clipboard.folders.empty?
 
@@ -108,7 +113,7 @@ class ClipboardTest < ActiveSupport::TestCase
 
   test 'a deleted file must also be deleted from the clipboard' do
     file = create(:user_file)
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     clipboard.add(file)
     assert !clipboard.files.empty?
 
@@ -118,7 +123,7 @@ class ClipboardTest < ActiveSupport::TestCase
   end
 
   test 'reset clears all the files and folders from the clipboard' do
-    clipboard = Clipboard.new
+    clipboard = Boxroom::Clipboard.new
     3.times { clipboard.add(create(:user_file)) }
     3.times { clipboard.add(create(:folder)) }
 

@@ -6,6 +6,8 @@ It aims to be a simple interface for managing and
 sharing files in a web browser. It lets users create folders and upload, download
 and share files. Admins can manage users, groups and permissions.
 
+![Boxroom](https://res.cloudinary.com/skoba/image/upload/v1518819948/Boxroom_vzqhre.png)
+
 ## Install
 - add to Gemfile `gem 'boxroom', github: 'sergey-koba-mobidev/boxroom-engine'`
 - run `rails boxroom:install:migrations`
@@ -33,6 +35,10 @@ end
 
 ## Contributing
 Please feel free to leave an issue or PR.
+
+## Testing
+- run migrations `bin/rails db:migrate RAILS_ENV=test`
+- run tests `bin/rails test`
 
 ## License
 The engine is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
