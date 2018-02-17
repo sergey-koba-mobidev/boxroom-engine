@@ -1,4 +1,5 @@
 # Boxroom
+[![Gem Version](https://badge.fury.io/rb/boxroom.svg)](https://badge.fury.io/rb/boxroom)
 This is a Rails engine built based on code of [Boxroom](https://github.com/mischa78/boxroom) project.
 
 # Features
