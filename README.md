@@ -1,5 +1,6 @@
 # Boxroom
 [![Gem Version](https://badge.fury.io/rb/boxroom.svg)](https://badge.fury.io/rb/boxroom)
+
 This is a Rails engine built based on code of [Boxroom](https://github.com/mischa78/boxroom) project.
 
 # Features
@@ -15,7 +16,7 @@ and share files. Admins can manage users, groups and permissions.
 - run `rails db:migrate`
 - mount engine in `config/routes.rb`
 ```ruby
-mount Boxroom::Engine => "/boxroom"
+mount Boxroom::Engine => '/boxroom'
 ```
 
 ## Config
@@ -30,7 +31,8 @@ Boxroom.configure do |config|
   config.show_groups = true
   config.show_settings = true
   config.show_shared_files = true
-  config.sign_out_path = nil # pass string to redirect to after sign out. '/dashboard' for example
+  config.show_search = true
+  config.sign_out_path = nil # pass string to redirect to after sign out, '/dashboard' for example.
 end
 ```
 
@@ -45,7 +47,6 @@ Please feel free to leave an issue or PR.
 The engine is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ## Roadmap:
-- tests for search
 - tag files
 - integrate with existing user model
 - support s3

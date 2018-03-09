@@ -12,7 +12,7 @@ module Boxroom::Search
 
     def search_folder(term, folder, options)
       options['folders'] << folder if folder.name.downcase.include? term.downcase
-      options['files'] += folder.user_files.where("lower(attachment_file_name) LIKE ?", "%#{term.downcase}%").all.to_a
+      options['files'] += folder.user_files.where('lower(attachment_file_name) LIKE ?', "%#{term.downcase}%").all.to_a
       folder.children.each do |f|
         search_folder(term, f, options)
       end
