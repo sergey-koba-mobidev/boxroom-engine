@@ -16,7 +16,7 @@ module Boxroom
           cookies[:auth_token] = {:value => user.remember_token, :expires => 2.weeks.from_now}
         end
 
-        session[:user_id] = user.id
+        session[:boxroom_user_id] = user.id
         redirect_url = session.delete(:return_to) || folders_url
         redirect_to redirect_url, :only_path => true
       else
@@ -26,10 +26,10 @@ module Boxroom
     end
 
     def destroy
-      current_user.forget_me
+      boxroom_current_user.forget_me
       cookies.delete :auth_token
       reset_session
-      session[:user_id] = nil
+      session[:boxroom_user_id] = nil
       redirect_to Boxroom.configuration.sign_out_path ? Boxroom.configuration.sign_out_path : new_session_url
     end
 

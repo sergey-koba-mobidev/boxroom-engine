@@ -70,7 +70,7 @@ module Boxroom
 
     # Overrides require_delete_permission in ApplicationController
     def require_delete_permission
-      unless @folder.is_root? || current_user.can_delete(@folder)
+      unless @folder.is_root? || boxroom_current_user.can_delete(@folder)
         redirect_to @folder.parent, :alert => t(:no_permissions_for_this_type, :method => t(:delete), :type => t(:this_folder))
       else
         require_delete_permissions_for(@folder.children)
@@ -79,7 +79,7 @@ module Boxroom
 
     def require_delete_permissions_for(folders)
       folders.each do |folder|
-        unless current_user.can_delete(folder)
+        unless boxroom_current_user.can_delete(folder)
           redirect_to @folder.parent, :alert => t(:no_delete_permissions_for_subfolder)
         else
           # Recursive...

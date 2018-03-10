@@ -12,7 +12,7 @@
 
 <div class="tabs">
   <ul>
-    <% if current_user.can_create(@folder) -%>
+    <% if boxroom_current_user.can_create(@folder) -%>
         <li>
           <a href="<%= new_folder_folder_path(@folder) %>">
             <span class="icon is-small"><i class="fa fa-folder"></i></span>
@@ -26,7 +26,7 @@
           </a>
         </li>
     <% end -%>
-    <% if current_user.member_of_admins? -%>
+    <% if boxroom_current_user.member_of_admins? -%>
         <li>
           <a href="#" id="permissions_link" class="permissions_link">
             <span class="icon is-small"><i class="fa fa-lock"></i></span>
@@ -58,10 +58,10 @@
   <%= concept(Boxroom::Folder::Cell::Show, @folder,
               folders: @folder.children,
               files: @folder.user_files,
-              current_user: current_user) %>
+              current_user: boxroom_current_user) %>
 </div>
 
-<% if current_user.member_of_admins? -%>
+<% if boxroom_current_user.member_of_admins? -%>
     <div id="permissions" style="display:none;">
       <%= render 'boxroom/permissions/form' %>
     </div>

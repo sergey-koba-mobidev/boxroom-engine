@@ -32,7 +32,7 @@
           </div>
         </div>
     <% end -%>
-    <% if signed_in? && current_user.member_of_admins? -%>
+    <% if signed_in? && boxroom_current_user.member_of_admins? -%>
         <div class="field">
           <%= label_tag t(:member_of_these_groups), nil, class: 'label' %>
           <div class="control">
@@ -54,7 +54,7 @@
       <div class="control">
         <%= f.submit t(:save), class: 'button is-link' %>
       </div>
-      <% if @user != current_user -%>
+      <% if @user != boxroom_current_user -%>
           <div class="control">
             <%= link_to t(:back), users_url, class: 'button is-text' %>
           </div>

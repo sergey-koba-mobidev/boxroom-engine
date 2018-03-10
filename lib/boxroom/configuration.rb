@@ -8,8 +8,11 @@ module Boxroom
                   :show_settings,
                   :show_shared_files,
                   :show_search,
+                  :uploads_path,
+                  :current_user_method,
+                  :sign_in_path,
                   :sign_out_path,
-                  :uploads_path
+                  :parent_controller
 
     def initialize
       @site_name         = 'Boxroom'
@@ -20,8 +23,14 @@ module Boxroom
       @show_settings     = true
       @show_shared_files = true
       @show_search       = true
-      @sign_out_path     = nil
       @uploads_path      = 'uploads'
+
+      # Integrate with existing user model
+      @current_user_method = nil
+      @sign_in_path        = nil
+      @sign_out_path       = nil
+
+      @parent_controller = 'ApplicationController'
     end
   end
 end

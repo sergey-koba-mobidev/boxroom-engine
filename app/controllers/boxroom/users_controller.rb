@@ -55,12 +55,12 @@ module Boxroom
     private
 
     def require_existing_user
-      if current_user.member_of_admins? && params[:id] != current_user.id.to_s
+      if boxroom_current_user.member_of_admins? && params[:id] != boxroom_current_user.id.to_s
         @title = t(:edit_user)
         @user = User.find(params[:id])
       else
         @title = t(:account_settings)
-        @user = current_user
+        @user = boxroom_current_user
       end
     rescue ActiveRecord::RecordNotFound
       redirect_to users_url, :alert => t(:user_already_deleted)

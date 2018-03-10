@@ -13,7 +13,7 @@
     <div class="navbar-start">
       <% if signed_in? -%>
           <%= link_to t(:folders), folders_path, class: 'navbar-item' %>
-          <% if current_user.member_of_admins? -%>
+          <% if boxroom_current_user.member_of_admins? -%>
               <% if Boxroom.configuration.show_users %>
                   <%= link_to t(:users), users_path, class: 'navbar-item' %>
               <% end %>
@@ -30,10 +30,10 @@
     <div class="navbar-end">
       <% if signed_in? -%>
           <div class="navbar-item">
-            <%= t :hello %>, <b><%= current_user.name %></b>
+            <%= t :hello %>, <b><%= boxroom_current_user.name %></b>
           </div>
           <% if Boxroom.configuration.show_settings %>
-              <%= link_to t(:settings), edit_user_path(current_user), class: 'navbar-item' %>
+              <%= link_to t(:settings), edit_user_path(boxroom_current_user), class: 'navbar-item' %>
           <% end %>
           <div class="navbar-item">
             <%= link_to t(:sign_out), signout_path, method: :delete, class: 'button is-danger' %>
