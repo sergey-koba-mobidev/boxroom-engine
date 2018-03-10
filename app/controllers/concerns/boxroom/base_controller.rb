@@ -71,7 +71,7 @@ module Boxroom
           reset_session
           session[:boxroom_user_id] = nil
           session[:return_to] = request.fullpath
-          redirect_to new_session_url
+          redirect_to Boxroom.configuration.sign_in_path ? Boxroom.configuration.sign_in_path : new_session_url
         else
           user.refresh_remember_token
           session[:boxroom_user_id] = user.id
