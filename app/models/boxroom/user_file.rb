@@ -16,6 +16,7 @@ module Boxroom
       new_file.folder = target_folder
       new_file.save!
 
+      #TODO: refactor to support S3
       path = "#{Rails.root}/#{Boxroom.configuration.uploads_path}/#{Rails.env}/#{new_file.id}/original"
       FileUtils.mkdir_p path
       FileUtils.cp_r self.attachment.path, "#{path}/#{new_file.id}"

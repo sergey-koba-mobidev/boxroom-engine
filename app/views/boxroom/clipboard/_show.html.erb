@@ -45,7 +45,7 @@
                               :method => :post, :title => t(:copy_file)
                   %>&nbsp;
               <% end -%>
-              <% if boxroom_current_user.can_create(@folder) && current_user.can_delete(item.folder) -%>
+              <% if boxroom_current_user.can_create(@folder) && boxroom_current_user.can_delete(item.folder) -%>
                   <%= link_to '<span class="icon is-small"><i class="fa fa-cut"></i></span>'.html_safe,
                               {:controller => :clipboard, :action => :move, :id => item.id, :type => 'file', :folder_id => @folder, :authenticity_token => form_authenticity_token},
                               :method => :post, :title => t(:move_file), :data => {:confirm => t(:are_you_sure)}

@@ -5,8 +5,19 @@ This is a Rails engine built based on code of [Boxroom](https://github.com/misch
 
 # Features
 It aims to be a simple interface for managing and
-sharing files in a web browser. It lets users create folders and upload, download
-and share files. Admins can manage users, groups and permissions.
+sharing files in a web browser. It lets users 
+- create folders
+- upload files
+- download files
+- share files
+- search folders and files 
+
+Admins can:
+- manage users
+- manage groups
+- manage access permissions
+
+Integrates with existing User model amd authentication system.
 
 ![Boxroom](https://res.cloudinary.com/skoba/image/upload/v1518819948/Boxroom_vzqhre.png)
 
@@ -70,6 +81,7 @@ Please feel free to leave an issue or PR.
 The engine is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ## Roadmap:
-- tag files
 - support s3
+- batch actions
+- tag files
 - integrate with active_admin

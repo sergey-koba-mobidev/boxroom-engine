@@ -28,6 +28,7 @@ module Boxroom
           folder_id: params[:target_folder_id]
       ).first
 
+      #TODO: refactor to support S3
       if existing_file # Resume upload
         existing_file.update_attribute(:attachment_file_size, existing_file.attachment_file_size + permitted_params.user_file["attachment"].size)
         File.open("#{Rails.root}/#{Boxroom.configuration.uploads_path}/#{Rails.env}/#{existing_file.id}/original/#{existing_file.id}", "ab") {|f| f.write(permitted_params.user_file["attachment"].read)}
