@@ -71,6 +71,5 @@ The engine is available as open source under the terms of the [MIT License](http
 
 ## Roadmap:
 - tag files
-- integrate with existing user model tests
 - support s3
 - integrate with active_admin

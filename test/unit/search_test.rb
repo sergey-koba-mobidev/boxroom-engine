@@ -2,8 +2,7 @@ require 'test_helper'
 
 class SearchTest < ActiveSupport::TestCase
   def setup
-    DatabaseCleaner.clean
-    FileUtils.rm_rf(Dir["#{Rails.root}/#{Boxroom.configuration.uploads_path}"])
+    do_cleanup
   end
 
   test 'folder should be provided' do

@@ -2,8 +2,7 @@ require 'test_helper'
 
 class GroupTest < ActiveSupport::TestCase
   def setup
-    DatabaseCleaner.clean
-    FileUtils.rm_rf(Dir["#{Rails.root}/#{Boxroom.configuration.uploads_path}"])
+    do_cleanup
   end
 
   test 'dependent permissions get deleted' do

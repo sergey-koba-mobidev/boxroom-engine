@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    boxroom (0.0.1)
+    boxroom (0.0.2)
       acts_as_tree
       bulma-rails (~> 0.6.2)
       cells-erb (~> 0.1.0)
@@ -98,7 +98,7 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
-    ffi (1.9.21)
+    ffi (1.9.23)
     font-awesome-rails (4.7.0.3)
       railties (>= 3.2, < 5.2)
     globalid (0.4.1)
@@ -163,7 +163,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.0)
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     reform (2.2.4)

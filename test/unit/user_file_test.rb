@@ -3,8 +3,7 @@ require 'test_helper'
 class UserFileTest < ActiveSupport::TestCase
   def setup
     clear_root_folder
-    DatabaseCleaner.clean
-    FileUtils.rm_rf(Dir["#{Rails.root}/#{Boxroom.configuration.uploads_path}"])
+    do_cleanup
   end
 
   test 'dependent share links get deleted' do

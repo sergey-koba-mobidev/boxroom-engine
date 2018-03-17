@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130628082245) do
+ActiveRecord::Schema.define(version: 20180316203125) do
 
   create_table "boxroom_folders", force: :cascade do |t|
     t.string "name"
@@ -80,7 +80,15 @@ ActiveRecord::Schema.define(version: 20130628082245) do
     t.datetime "updated_at", null: false
     t.string "signup_token"
     t.datetime "signup_token_expires_at"
+    t.integer "original_id"
     t.index ["signup_token"], name: "index_boxroom_users_on_signup_token"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

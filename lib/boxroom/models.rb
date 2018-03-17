@@ -20,6 +20,7 @@ module Boxroom
         bu.email = send(params[:email])
         bu.is_admin = send(params[:is_admin])
         bu.save
+        throw "Failed to save Boxroom::User with email=#{bu.email}" unless bu.persisted?
       end
 
       def destroy_boxroom_user(params)
