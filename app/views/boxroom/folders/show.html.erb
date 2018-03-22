@@ -56,9 +56,12 @@
 
 <div id="files_and_folders">
   <%= concept(Boxroom::Folder::Cell::Show, @folder,
-              folders: @folder.children,
-              files: @folder.user_files,
-              current_user: boxroom_current_user) %>
+              folders: @folders,
+              files: @files,
+              current_user: boxroom_current_user,
+              sort_field: params[:sort_field],
+              sort_dir: params[:sort_dir]
+      ) %>
 </div>
 
 <% if boxroom_current_user.member_of_admins? -%>

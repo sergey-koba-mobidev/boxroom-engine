@@ -17,6 +17,10 @@ module Boxroom
 
     # Note: @folder is set in require_existing_folder
     def show
+      result = Boxroom::Folder::FilesAndFolders.(params: {folder_id: @folder.id, sort_field: params[:sort_field], sort_dir: params[:sort_dir]})
+      if result.success?
+        @files, @folders = result['files'], result['folders']
+      end
     end
 
     # Note: @target_folder is set in require_existing_target_folder

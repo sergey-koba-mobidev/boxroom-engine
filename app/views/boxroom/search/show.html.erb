@@ -2,10 +2,12 @@
 
 <h1 class="title"><%= "Search `#{@term}` in #{@folder.name}" %></h1>
 
-<%= concept(Boxroom::Folder::Cell::Show, nil,
+<%= concept(Boxroom::Folder::Cell::Show, @folder,
             folders: @folders,
             files: @files,
-            current_user: boxroom_current_user
+            current_user: boxroom_current_user,
+            sort_field: params[:sort_field],
+            sort_dir: params[:sort_dir]
     ) %>
 
 <div class="field">
