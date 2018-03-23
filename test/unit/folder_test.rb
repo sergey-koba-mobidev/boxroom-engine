@@ -205,4 +205,34 @@ class FolderTest < ActiveSupport::TestCase
     assert_equal root.name, 'Root folder'
     assert_nil root.parent
   end
+
+  test 'should sort folders' do
+    root = create(:folder, :name => 'Root folder', :parent => nil) # Root folder
+    create(:folder, name: 'test0')
+    create(:folder, name: 'test1')
+
+    sort_fields = %w(name date size)
+    sort_fields.each do |sort_field|
+      result = Boxroom::Folder::FilesAndFolders.(params: {folder_id: root.id, sort_field: sort_field, sort_dir: 'desc'})
+      assert_equal true, result.success?
+      assert_equal 2, result['folders'].size
+      assert_equal sort_field == 'size' ? 'test0' : 'test1', result['folders'][0].name
+      assert_equal sort_field == 'size' ? 'test1' : 'test0', result['folders'][1].name
+    end
+  end
+
+  test 'should sort files' do
+    root = create(:folder, :name => 'Root folder', :parent => nil) # Root folder
+    create(:user_file, attachment_file_name: 'test0', attachment_file_size: 1)
+    create(:user_file, attachment_file_name: 'test1', attachment_file_size: 2)
+
+    sort_fields = %w(name date size)
+    sort_fields.each do |sort_field|
+      result = Boxroom::Folder::FilesAndFolders.(params: {folder_id: root.id, sort_field: sort_field, sort_dir: 'desc'})
+      assert_equal true, result.success?
+      assert_equal 2, result['files'].size
+      assert_equal 'test1', result['files'][0].attachment_file_name
+      assert_equal 'test0', result['files'][1].attachment_file_name
+    end
+  end
 end

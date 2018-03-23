@@ -11,17 +11,18 @@ Gem::Specification.new do |s|
   s.summary     = 'Rails file manager engine'
   s.description = 'Rails file manager engine'
   s.license     = 'MIT'
+  s.required_ruby_version = '>= 2.3.1'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '>= 5.0.2'
-  s.add_dependency 'dynamic_form'
-  s.add_dependency 'acts_as_tree'
+  s.add_dependency 'rails', '~> 5.0'
+  s.add_dependency 'dynamic_form', '~> 1.1'
+  s.add_dependency 'acts_as_tree', '~> 2.7'
   s.add_dependency 'paperclip', '~> 5.2.0'
   s.add_dependency 'bulma-rails', '~> 0.6.2'
-  s.add_dependency 'font-awesome-rails'
-  s.add_dependency 'jquery-rails'
-  s.add_dependency 'jquery-fileupload-rails'
+  s.add_dependency 'font-awesome-rails', '~> 4.7'
+  s.add_dependency 'jquery-rails', '~> 4.3'
+  s.add_dependency 'jquery-fileupload-rails', '~> 0.4.7'
 
   s.add_dependency 'trailblazer-rails', '~> 2.1.0'
   s.add_dependency 'cells-rails', '~> 0.0.8'

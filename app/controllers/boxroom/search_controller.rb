@@ -5,7 +5,7 @@ module Boxroom
     def show
       @folder = get_folder_or_redirect(params[:folder_id])
       @term = params[:term]
-      result = Search::FilesAndFolders.(params: {term: @term, folder_id: @folder.id, sort_field: params[:sort_field]})
+      result = Search::FilesAndFolders.(params: {term: @term, folder_id: @folder.id, sort_field: params[:sort_field], sort_dir: params[:sort_dir]})
       if result.success?
         @folders = result['folders']
         @files = result['files']
