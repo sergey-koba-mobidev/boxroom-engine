@@ -254,6 +254,11 @@
 
   #folders/edit
   rename_folder: Renommer dossier
+  edit_notifications: Modifier les notifications
+  notify_emails_list: Liste des courriels séparés par des virgules
+  notify_create: Notifier Créer
+  notify_update: Avertir mise à
+  notify_remove: Notifier Supprimer
 
   #folders/new
   new_folder: Nouveau dossier
@@ -270,7 +275,7 @@
   add_to_clipboard: Ajouter au presse-papier
   download: Télécharger
   share: Partager
-  search: Search files and folders inside current folder... Press Enter to search
+  search: Rechercher des fichiers et des dossiers dans le dossier actuel ... Appuyez sur Entrée pour rechercher
 
   #groups/edit
   rename_group: Renommer groupe
@@ -401,3 +406,8 @@
   signup_email_subject: '[Boxroom] Invitiation à créer un compte'
   reset_password_email_subject: '[Boxroom] Instructions de réinitialisation mot de passe'
   share_link_email_subject: "[Boxroom] %{email} a partagé un fichier avec vous"
+
+  # mailers/user_file_mailer
+  file_added: '[Boxroom] Nouveau fichier a été ajouté au dossier'
+  file_updated: '[Boxroom] Le fichier a été mis à jour dans le dossier'
+  file_removed: '[Boxroom] Le fichier a été supprimé du dossier'

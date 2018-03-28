@@ -8,6 +8,34 @@
   <div class="control">
     <%= f.text_field :name, class: 'input' %>
   </div>
+  <% if Boxroom.configuration.enable_notifications %>
+      <section class="section">
+        <h2 class="subtitle"> <%= t :edit_notifications %> </h2>
+        <%= f.label :notify_emails, class: 'label' %>
+        <div class="control">
+          <%= f.text_field :notify_emails, placeholder: t(:notify_emails_list), class: 'input' %>
+        </div>
+
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box :notify_create %>
+            <%= t :notify_create %>
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box :notify_update %>
+            <%= t :notify_update %>
+          </label>
+        </div>
+        <div class="control">
+          <label class="checkbox">
+            <%= f.check_box :notify_remove %>
+            <%= t :notify_remove %>
+          </label>
+        </div>
+      </section>
+  <% end %>
 </div>
 <div class="field is-grouped">
   <div class="control">

@@ -7,7 +7,7 @@ module Boxroom
     end
 
     def folder_attributes
-      [:name]
+      [:name, :notify_emails, :notify_create, :notify_update, :notify_remove]
     end
 
     def group_attributes

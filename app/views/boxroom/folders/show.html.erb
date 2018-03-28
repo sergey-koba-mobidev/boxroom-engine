@@ -40,6 +40,14 @@
         <span><%= t(:clipboard) %></span>
       </a>
     </li>
+    <% if boxroom_current_user.can_update(@folder) -%>
+        <li>
+          <a href="<%= edit_folder_path(@folder) %>">
+            <span class="icon is-small"><i class="fa fa-edit"></i></span>
+            <span><%= t(:edit) %></span>
+          </a>
+        </li>
+    <% end -%>
   </ul>
 </div>
 

@@ -257,6 +257,11 @@
 
   #folders/edit
   rename_folder: Renombrar Carpeta
+  edit_notifications: Editar notificaciones
+  notify_emails_list: Lista de correos electrónicos separados por comas
+  notify_create: Notificar Crear
+  notify_update: Notificar actualización
+  notify_remove: Notificar Eliminar
 
   #folders/new
   new_folder: Nueva Carpeta
@@ -273,7 +278,7 @@
   add_to_clipboard: Agregar al portapapeles
   download: Descargar
   share: Compartir
-  search: Search files and folders inside current folder... Press Enter to search
+  search: Buscar archivos y carpetas dentro de la carpeta actual ... Presione Entrar para buscar
 
   #groups/edit
   rename_group: Renombrar grupo
@@ -401,3 +406,8 @@
   signup_email_subject: 'Invitación al Sistema de Gestión de Archivos'
   reset_password_email_subject: 'Gestión de Archivos: cambio de claves'
   share_link_email_subject: 'Gestión de Archivos: se le ha compartido un enlace'
+
+  # mailers/user_file_mailer
+  file_added: '[Boxroom] Nuevo archivo fue agregado a la carpeta'
+  file_updated: '[Boxroom] El archivo se actualizó en la carpeta'
+  file_removed: '[Boxroom] El archivo fue eliminado de la carpeta'

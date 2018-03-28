@@ -257,6 +257,11 @@
 
   #folders/edit
   rename_folder: 重新命名文件夹
+  edit_notifications: 编辑通知
+  notify_emails_list: 用逗号分隔的电子邮件列表
+  notify_create: 通知创建
+  notify_update: 通知更新
+  notify_remove: 通知删除
 
   #folders/new
   new_folder: 新文件夹
@@ -273,7 +278,7 @@
   add_to_clipboard: 加到剪贴板
   download: 下载
   share: 共享
-  search: Search files and folders inside current folder... Press Enter to search
+  search: 搜索当前文件夹内的文件和文件夹...按Enter键搜索
 
   #groups/edit
   rename_group: 群组重新命名
@@ -404,3 +409,8 @@
   signup_email_subject: '[Boxroom] 注册邀请'
   reset_password_email_subject: '[Boxroom] 重设密码的步骤'
   share_link_email_subject: '[Boxroom] %{email}与您共享了文件'
+
+  # mailers/user_file_mailer
+  file_added: '[Boxroom] 新文件已添加到文件夹'
+  file_updated: '[Boxroom] 文件已在文件夹中更新'
+  file_removed: '[Boxroom] 文件已从文件夹中删除'

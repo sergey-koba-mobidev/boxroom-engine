@@ -265,6 +265,12 @@ de:
 
   #folders/edit
   rename_folder: Ordner umbenennen
+  edit_notifications: Benachrichtigungen bearbeiten
+  notify_emails_list: Liste der durch Komma getrennten E-Mails
+  notify_create: Benachrichtigen Sie Erstellen
+  notify_update: Aktualisierung benachrichtigen
+  notify_remove: Benachrichtigen Entfernen
+
 
   #folders/new
   new_folder: Neuen Ordner anlegen
@@ -281,7 +287,7 @@ de:
   add_to_clipboard: Zur Zwischenablage hinzufügen
   download: Herunterladen
   share: Freigeben
-  search: Search files and folders inside current folder... Press Enter to search
+  search: Suchen Sie Dateien und Ordner im aktuellen Ordner ... Drücken Sie die Eingabetaste, um zu suchen
 
   #groups/edit
   rename_group: Gruppe umbenennen
@@ -412,3 +418,8 @@ de:
   signup_email_subject: '[Boxroom] Sign up invitation'
   reset_password_email_subject: '[Boxroom] Anleitung zum Ändern Ihres Kennworts'
   share_link_email_subject: '[Boxroom] %{email} möchte Ihnen eine Datei freigeben'
+
+  # mailers/user_file_mailer
+  file_added: '[Boxroom] Neue Datei wurde zum Ordner hinzugefügt'
+  file_updated: '[Boxroom] Die Datei wurde im Ordner aktualisiert'
+  file_removed: '[Boxroom] Die Datei wurde aus dem Ordner entfernt'

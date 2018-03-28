@@ -259,6 +259,11 @@ nl:
 
   #folders/edit
   rename_folder: Mapnaam wijzigen
+  edit_notifications: Bewerk meldingen
+  notify_emails_list: Lijst met door komma's gescheiden e-mails
+  notify_create: Notificeer Create
+  notify_update: Breng update op de hoogte
+  notify_remove: Verwittig Verwijderen
 
   #folders/new
   new_folder: Nieuwe map
@@ -275,7 +280,7 @@ nl:
   add_to_clipboard: Op klembord plaatsen
   download: Download
   share: Delen
-  search: Search files and folders inside current folder... Press Enter to search
+  search: Zoek bestanden en mappen in de huidige map ... Druk op Enter om te zoeken
 
   #groups/edit
   rename_group: Groepnaam wijzigen
@@ -406,3 +411,8 @@ nl:
   signup_email_subject: '[Boxroom] Uitnodiging om aan te melden'
   reset_password_email_subject: '[Boxroom] Instructies om uw wachtwoord te resetten'
   share_link_email_subject: '[Boxroom] %{email} heeft een bestand met u gedeeld'
+
+  # mailers/user_file_mailer
+  file_added: '[Boxroom] Nieuw bestand toegevoegd aan map'
+  file_updated: '[Boxroom] Bestand is in map bijgewerk'
+  file_removed: '[Boxroom] Bestand is uit de map verwijderd'

@@ -34,6 +34,7 @@ module Boxroom
         File.open("#{Rails.root}/#{Boxroom.configuration.uploads_path}/#{Rails.env}/#{existing_file.id}/original/#{existing_file.id}", "ab") {|f| f.write(permitted_params.user_file["attachment"].read)}
       else
         @file = @target_folder.user_files.create(permitted_params.user_file)
+        UserFile::NotifyCreate.(params: {id: @file.id})
       end
 
       head :ok
@@ -46,6 +47,7 @@ module Boxroom
     # @file and @folder are set in require_existing_file
     def update
       if @file.update_attributes(permitted_params.user_file)
+        UserFile::NotifyUpdate.(params: {id: @file.id})
         redirect_to edit_file_url(@file), :notice => t(:your_changes_were_saved)
       else
         render :action => 'edit'
@@ -54,6 +56,7 @@ module Boxroom
 
     # @file and @folder are set in require_existing_file
     def destroy
+      UserFile::NotifyRemove.(params: {id: @file.id})
       @file.destroy
       redirect_to @folder
     end

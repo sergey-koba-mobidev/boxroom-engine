@@ -258,6 +258,11 @@
 
   #folders/edit
   rename_folder: Rename folder
+  edit_notifications: Edit Notifications
+  notify_emails_list: List of comma separated emails
+  notify_create: Notify Create
+  notify_update: Notify Update
+  notify_remove: Notify Remove
 
   #folders/new
   new_folder: New folder
@@ -405,3 +410,8 @@
   signup_email_subject: '[Boxroom] Sign up invitation'
   reset_password_email_subject: '[Boxroom] Password reset instructions'
   share_link_email_subject: '[Boxroom] %{email} shared a file with you'
+
+  # mailers/user_file_mailer
+  file_added: '[Boxroom] New file was added to folder'
+  file_updated: '[Boxroom] File was updated in folder'
+  file_removed: '[Boxroom] File was removed from folder'

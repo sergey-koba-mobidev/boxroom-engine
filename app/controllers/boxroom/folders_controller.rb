@@ -2,14 +2,14 @@ module Boxroom
   class FoldersController < Boxroom::ApplicationController
     include Boxroom::BaseController
 
-    before_action :require_existing_folder, :only => [:show, :edit, :update, :destroy]
-    before_action :require_existing_target_folder, :only => [:new, :create]
-    before_action :require_folder_isnt_root_folder, :only => [:edit, :update, :destroy]
+    before_action :require_existing_folder, only: [:show, :edit, :update, :destroy]
+    before_action :require_existing_target_folder, only: [:new, :create]
+    before_action :require_folder_isnt_root_folder, only: [:edit, :update, :destroy]
 
-    before_action :require_create_permission, :only => [:new, :create]
-    before_action :require_read_permission, :only => :show
-    before_action :require_update_permission, :only => [:edit, :update]
-    before_action :require_delete_permission, :only => :destroy
+    before_action :require_create_permission, only: [:new, :create]
+    before_action :require_read_permission, only: :show
+    before_action :require_update_permission, only: [:edit, :update]
+    before_action :require_delete_permission, only: :destroy
 
     def index
       redirect_to Folder.root
