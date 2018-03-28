@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    boxroom (0.0.4)
+    boxroom (0.0.5)
       acts_as_tree (~> 2.7)
       bulma-rails (~> 0.6.2)
       cells-erb (~> 0.1.0)

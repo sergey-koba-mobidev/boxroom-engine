@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180316203125) do
+ActiveRecord::Schema.define(version: 20180323134701) do
 
   create_table "boxroom_folders", force: :cascade do |t|
     t.string "name"
     t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "notify_emails"
+    t.boolean "notify_create"
+    t.boolean "notify_update"
+    t.boolean "notify_remove"
     t.index ["parent_id"], name: "index_boxroom_folders_on_parent_id"
   end
 

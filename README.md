@@ -158,7 +158,6 @@ ActionMailer::Base.default from: 'Boxroom <yourname@yourdomain.com>'
 The engine is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
 ## Roadmap:
-- tests for notifications
 - support s3
 - batch actions
 - tag files

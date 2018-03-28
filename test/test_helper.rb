@@ -31,5 +31,6 @@ class ActiveSupport::TestCase
   def do_cleanup
     DatabaseCleaner.clean
     FileUtils.rm_rf(Dir["#{Rails.root}/#{Boxroom.configuration.uploads_path}"])
+    ActionMailer::Base.deliveries.clear
   end
 end
